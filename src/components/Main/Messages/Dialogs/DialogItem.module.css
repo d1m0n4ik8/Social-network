@@ -1,0 +1,15 @@
+.dialogs {
+   display: flex;
+   margin: 10px 0;
+}
+.avatar img {
+   width: 40px;
+   border-radius: 50%;
+}
+.userName {
+   font-size: 20px;
+   font-style: normal;
+   display: flex;
+   align-items: center;
+   margin: 0 10px;
+}

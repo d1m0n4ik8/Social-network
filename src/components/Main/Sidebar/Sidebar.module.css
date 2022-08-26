@@ -1,0 +1,23 @@
+.nav {
+   max-width: 25%;
+   padding: 0 20px;
+}
+.nav_links {
+   font-size: 20px;
+   list-style: none;
+   padding: 0 10px;
+}
+.nav_links li a {
+   text-decoration: none;
+   line-height: 30px;
+   color: #000;
+}
+.nav_links li a:hover {
+   color: blue;
+   text-decoration: solid underline;
+}
+li a.active {
+   color: blue;
+   font-style: normal;
+   font-weight: bold;
+}

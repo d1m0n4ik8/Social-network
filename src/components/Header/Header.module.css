@@ -1,0 +1,7 @@
+.header {
+   padding: 0 20px;
+   background: #ccc;
+}
+.header .logo img {
+   max-height: 50px;
+}

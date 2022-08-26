@@ -1,0 +1,12 @@
+.post {
+   display: flex;
+   align-items: center;
+}
+.image img {
+   width: 40px;
+   border-radius: 50%;
+}
+.discription {
+   font-size: 20px;
+   padding: 0 10px;
+}
