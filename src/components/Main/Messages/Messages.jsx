@@ -1,16 +1,13 @@
+import React from 'react'
 import s from './Messages.module.css'
 import MessageItem from './Message/MessageItem'
 import DialogItem from './Dialogs/DialogItem'
-import { addNewMessageCreator, updateMessageCreator } from '../../../Redux/State'
 const Messages = (props) => {
-   let dialogs = props.state.dialog.map((el) => <DialogItem name={el.name} surname={el.surname} image={el.image} />)
-   let messages = props.state.messages.map((el) => <MessageItem message={el.message} />)
+   let dialogs = props.dialog.map((el) => <DialogItem key={el.id} name={el.name} surname={el.surname} image={el.image} />)
+   let messages = props.messages.map((el) => <MessageItem key={el.id} message={el.message} />)
    let changeNewMessage = (e) => {
       let text = e.target.value
-      props.dispatch(updateMessageCreator(text))
-   }
-   let addNewMessage = () => {
-      props.dispatch(addNewMessageCreator())
+      props.changeNewMessage(text)
    }
    return (
       <div className={s.messages}>
@@ -18,8 +15,8 @@ const Messages = (props) => {
          <div className={s.message}>
             {messages}
             <div>
-               <textarea onChange={changeNewMessage} value={props.state.newMessage} />
-               <button onClick={addNewMessage}>Send</button>
+               <textarea onChange={changeNewMessage} value={props.newMessage} />
+               <button onClick={props.addNewMessage}>Send</button>
             </div>
          </div>
       </div>
