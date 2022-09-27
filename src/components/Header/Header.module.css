@@ -1,7 +1,16 @@
 .header {
    padding: 0 20px;
-   background: #ccc;
+   background: #252525;
 }
-.header .logo img {
-   max-height: 50px;
+.header a {
+   text-decoration: none;
+}
+.logo {
+   display: flex;
+   align-items: center;
+   color: #764dbe;
+   font-style: italic;
+   font-weight: 600;
+   font-size: 24px;
+   line-height: 50px;
 }

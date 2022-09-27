@@ -1,23 +1,26 @@
 .nav {
-   width: 25%;
-   padding: 0 20px;
+   border-right: 1px solid #d3d3d3;
+   height: 90%;
 }
 .nav_links {
-   font-size: 20px;
+   font-size: 25px;
    list-style: none;
-   padding: 0 10px;
+   padding: 0;
 }
 .nav_links li a {
+   display: block;
    text-decoration: none;
    line-height: 30px;
-   color: #000;
+   color: #d3d3d3;
+   width: 100%;
+   padding: 0 20px;
+   line-height: 40px;
 }
 .nav_links li a:hover {
-   color: blue;
+   color: #764dbe;
    text-decoration: solid underline;
 }
 li a.active {
-   color: blue;
+   color: #764dbe;
    font-style: normal;
-   font-weight: bold;
 }

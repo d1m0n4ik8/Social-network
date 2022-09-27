@@ -10,21 +10,27 @@ import Music from './components/Main/Music/Music'
 import Settings from './components/Main/Settings/Settings'
 import ProfileContainer from './components/Main/Profile/ProfileContainer'
 import MessagesContainer from './components/Main/Messages/MessagesContainer'
+import UsersContainer from './components/Main/Users/UsersContainer'
 
 const App = () => {
    return (
       <div className="page">
          <Header />
          <div className="content container">
-            <Sidebar />
-            <Routes>
-               <Route path="/" element={<Home />} />
-               <Route path="Profile" element={<ProfileContainer />} />
-               <Route path="Messages" element={<MessagesContainer />} />
-               <Route path="News" element={<News />} />
-               <Route path="Music" element={<Music />} />
-               <Route path="Settings" element={<Settings />} />
-            </Routes>
+            <div className="side-bar">
+               <Sidebar />
+            </div>
+            <div className="main">
+               <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="Profile" element={<ProfileContainer />} />
+                  <Route path="Messages" element={<MessagesContainer />} />
+                  <Route path="Users" element={<UsersContainer />} />
+                  <Route path="News" element={<News />} />
+                  <Route path="Music" element={<Music />} />
+                  <Route path="Settings" element={<Settings />} />
+               </Routes>
+            </div>
          </div>
          <Footer />
       </div>

@@ -6,11 +6,6 @@ const Sidebar = () => {
       <nav className={s.nav}>
          <ul className={s.nav_links}>
             <li>
-               <NavLink to="/" className={({ isActive }) => (isActive ? s.active : '')}>
-                  Home
-               </NavLink>
-            </li>
-            <li>
                <NavLink to="/Profile" className={({ isActive }) => (isActive ? s.active : '')}>
                   Profile
                </NavLink>
@@ -18,6 +13,11 @@ const Sidebar = () => {
             <li>
                <NavLink to="/Messages" className={({ isActive }) => (isActive ? s.active : '')}>
                   Messages
+               </NavLink>
+            </li>
+            <li>
+               <NavLink to="/Users" className={({ isActive }) => (isActive ? s.active : '')}>
+                  Users
                </NavLink>
             </li>
             <li>

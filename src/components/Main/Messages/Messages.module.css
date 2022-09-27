@@ -1,14 +1,8 @@
 .messages {
-   font-size: 20px;
-   width: 100%;
+   font-size: 25px;
+   min-width: 100%;
    display: flex;
    padding: 20px 0;
    width: 100%;
-}
-.dialog {
-   width: 25%;
-}
-.message {
-   width: 75%;
-   margin-top: 10px;
+   justify-content: space-between;
 }

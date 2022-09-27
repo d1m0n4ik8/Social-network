@@ -7,7 +7,7 @@
    flex-direction: column;
 }
 .container {
-   max-width: 1200px;
+   max-width: 100%;
    width: 100%;
    margin: 0 auto;
    padding: 10px;
@@ -15,4 +15,8 @@
 .content {
    flex: 1 1 auto;
    display: flex;
+}
+.main {
+   width: 100%;
+   padding: 0 30px;
 }

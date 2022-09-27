@@ -1,5 +1,5 @@
-const addNewMessageType = 'ADD-NEW-MESSAGE'
-const updateMessageType = 'UPDATE-NEW-MESSAGE'
+const ADD_NEW_MESSAGE_TYPE = 'ADD-NEW-MESSAGE'
+const UPDATE_MESSAGE_TYPE = 'UPDATE-NEW-MESSAGE'
 let initState = {
    dialog: [
       { id: 0, name: 'Dima', surname: 'Svyryd', image: 'https://cdn-icons-png.flaticon.com/512/147/147140.png' },
@@ -15,14 +15,14 @@ let initState = {
 }
 const dialogReducer = (state = initState, action) => {
    switch (action.type) {
-      case addNewMessageType: {
+      case ADD_NEW_MESSAGE_TYPE: {
          let message = {
             id: state.messages.length,
             message: state.newMessage,
          }
          return { ...state, messages: [...state.messages, message] }
       }
-      case updateMessageType:
+      case UPDATE_MESSAGE_TYPE:
          return { ...state, newMessage: action.message }
       default:
          return state
@@ -30,5 +30,5 @@ const dialogReducer = (state = initState, action) => {
 }
 
 export default dialogReducer
-export const addNewMessageCreator = () => ({ type: addNewMessageType })
-export const updateMessageCreator = (message) => ({ type: updateMessageType, message: message })
+export const addNewMessageCreator = () => ({ type: ADD_NEW_MESSAGE_TYPE })
+export const updateMessageCreator = (message) => ({ type: UPDATE_MESSAGE_TYPE, message: message })

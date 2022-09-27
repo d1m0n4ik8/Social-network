@@ -3,13 +3,13 @@
    margin: 10px 0;
 }
 .avatar img {
-   width: 40px;
+   width: 50px;
    border-radius: 50%;
 }
 .userName {
-   font-size: 20px;
+   font-size: 25px;
    font-style: normal;
    display: flex;
    align-items: center;
-   margin: 0 10px;
+   margin: 0 20px;
 }

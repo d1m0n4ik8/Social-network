@@ -1,0 +1,40 @@
+.user {
+   width: 100%;
+   display: flex;
+   align-items: center;
+}
+.userProfile {
+   max-width: 50%;
+   display: flex;
+   align-items: center;
+}
+.avatar img {
+   width: 50px;
+   height: 50px;
+   margin: 5px;
+}
+.following {
+   padding: 0 20px;
+}
+.following button {
+   padding: 5px 10px;
+   background: rgb(89, 108, 231);
+   border-radius: 20px;
+   border: none;
+}
+.following button:hover {
+   background: rgb(68, 88, 222);
+}
+.status {
+   font-size: 16px;
+   font-weight: 500;
+   font-style: italic;
+}
+.about {
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+}
+.following button.unfollow {
+   background: #d3d3d3;
+}

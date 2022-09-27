@@ -1,5 +1,5 @@
-const addPostType = 'ADD-NEW-POST'
-const updatePostMessageType = 'UPDATE-POST'
+const ADD_POST_TYPE = 'ADD-NEW-POST'
+const UPDATE_POST_TEXT_TYPE = 'UPDATE-POST'
 let initState = {
    posts: [
       { id: 0, image: 'https://cdn-icons-png.flaticon.com/512/147/147130.png', message: 'Hello, how are you?' },
@@ -10,7 +10,7 @@ let initState = {
 }
 const profileReducer = (state = initState, action) => {
    switch (action.type) {
-      case addPostType: {
+      case ADD_POST_TYPE: {
          let post = {
             id: state.posts.length,
             image: `https://cdn-icons-png.flaticon.com/512/147/147133.png`,
@@ -18,7 +18,7 @@ const profileReducer = (state = initState, action) => {
          }
          return { ...state, posts: [...state.posts, post] }
       }
-      case updatePostMessageType: {
+      case UPDATE_POST_TEXT_TYPE: {
          return { ...state, newPostMessage: action.postMessage }
       }
       default:
@@ -28,5 +28,5 @@ const profileReducer = (state = initState, action) => {
 
 export default profileReducer
 
-export const addPostActionCreator = () => ({ type: addPostType })
-export const updateMessageActionCreator = (postMessage) => ({ type: updatePostMessageType, postMessage: postMessage })
+export const addPostActionCreator = () => ({ type: ADD_POST_TYPE })
+export const updateMessageActionCreator = (postMessage) => ({ type: UPDATE_POST_TEXT_TYPE, postMessage: postMessage })
