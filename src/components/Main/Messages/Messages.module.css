@@ -6,3 +6,34 @@
    width: 100%;
    justify-content: space-between;
 }
+.dialog {
+   width: 50%;
+}
+.messages {
+   height: 100%;
+}
+.userMessage {
+   width: 50%;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   border: 1px solid #d3d3d3;
+   border-radius: 20px;
+   padding: 20px;
+}
+.send {
+   display: flex;
+   justify-content: space-between;
+}
+.textarea {
+   border-radius: 10px;
+   resize: none;
+   width: 80%;
+   padding: 10px;
+}
+.btn {
+   border-radius: 10px;
+   background-color: blueviolet;
+   width: 18%;
+}

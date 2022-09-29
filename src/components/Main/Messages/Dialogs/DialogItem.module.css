@@ -1,6 +1,7 @@
 .dialogs {
    display: flex;
    margin: 10px 0;
+   width: 100%;
 }
 .avatar img {
    width: 50px;
@@ -8,8 +9,12 @@
 }
 .userName {
    font-size: 25px;
-   font-style: normal;
+   font-style: italic;
    display: flex;
    align-items: center;
    margin: 0 20px;
+   width: 100%;
+}
+.surname {
+   padding-left: 10px;
 }

@@ -2,8 +2,12 @@
    padding: 0 20px;
    background: #252525;
 }
-.header a {
+.header .logo a {
    text-decoration: none;
+   font-size: 30px;
+}
+.header .logo a:active {
+   color: #764dbe;
 }
 .logo {
    display: flex;

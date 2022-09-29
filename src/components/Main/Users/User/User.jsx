@@ -13,8 +13,10 @@ const User = (props) => {
             <div className={s.avatar}>
                <img src={props.user.avatar} alt="avatar" />
             </div>
-            <div className={s.firstName}>{props.user.fullName.firstName}</div>
-            <div className={s.secondName}>{props.user.fullName.secondName}</div>
+            <div className={s.fullName}>
+               <div className={s.firstName}>{props.user.fullName.firstName}</div>
+               <div className={s.secondName}>{props.user.fullName.secondName}</div>
+            </div>
             <div className={s.following}>
                {props.user.followed ? (
                   <button className={s.unfollow} onClick={unfollow}>

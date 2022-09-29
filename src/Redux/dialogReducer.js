@@ -7,9 +7,9 @@ let initState = {
       { id: 2, name: 'Vova', surname: 'Beresten', image: 'https://cdn-icons-png.flaticon.com/512/147/147133.png' },
    ],
    messages: [
-      { id: 0, message: 'Hello' },
-      { id: 1, message: 'How are you' },
-      { id: 2, message: "I'm fine, and you?" },
+      { id: 0, message: 'Hello', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147140.png' },
+      { id: 1, message: 'How are you', avatar: 'https://cdn-icons-png.flaticon.com/512/147/147140.png' },
+      { id: 2, message: "I'm fine, and you?", avatar: 'https://cdn-icons-png.flaticon.com/512/147/147140.png' },
    ],
    newMessage: '',
 }
@@ -19,6 +19,7 @@ const dialogReducer = (state = initState, action) => {
          let message = {
             id: state.messages.length,
             message: state.newMessage,
+            avatar: 'https://cdn-icons-png.flaticon.com/512/147/147140.png',
          }
          return { ...state, messages: [...state.messages, message] }
       }

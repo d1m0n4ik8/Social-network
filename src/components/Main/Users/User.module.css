@@ -1,3 +1,10 @@
 .users {
    width: 100%;
 }
+.activePage {
+   font-size: 25px;
+   color: blue;
+}
+.page {
+   font-size: 16px;
+}
