@@ -5,9 +5,10 @@ const CHANGE_PAGE = 'CHANGE_PAGE'
 
 let initState = {
    users: [],
-   currentPage: 1,
    amountPages: 3,
+   currentPage: 1,
 }
+
 const usersReducer = (state = initState, action) => {
    switch (action.type) {
       case FOLLOW:
@@ -35,7 +36,7 @@ const usersReducer = (state = initState, action) => {
       case SET_STATE:
          return { ...state, users: [...action.users] }
       case CHANGE_PAGE:
-         return { ...state, currentPage: action.page }
+         return { ...state, currentPage: action.currentPage }
       default:
          return state
    }
@@ -46,4 +47,4 @@ export default usersReducer
 export const followAC = (user_id) => ({ type: FOLLOW, user_id })
 export const unfollowAC = (user_id) => ({ type: UNFOLLOW, user_id })
 export const setStateAC = (users) => ({ type: SET_STATE, users })
-export const changePageAC = (page) => ({ type: SET_STATE, page })
+export const changePageAC = (currentPage) => ({ type: CHANGE_PAGE, currentPage })

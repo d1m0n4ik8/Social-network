@@ -1,5 +1,6 @@
 const ADD_POST_TYPE = 'ADD-NEW-POST'
 const UPDATE_POST_TEXT_TYPE = 'UPDATE-POST'
+const SET_STATE = 'SET_STATE'
 let initState = {
    posts: [
       { id: 0, image: 'https://cdn-icons-png.flaticon.com/512/147/147130.png', message: 'Hello, how are you?' },
@@ -21,6 +22,11 @@ const profileReducer = (state = initState, action) => {
       case UPDATE_POST_TEXT_TYPE: {
          return { ...state, newPostMessage: action.postMessage }
       }
+      case SET_STATE:
+         return {
+            ...state,
+            posts: [...action.posts],
+         }
       default:
          return state
    }
@@ -30,3 +36,4 @@ export default profileReducer
 
 export const addPostActionCreator = () => ({ type: ADD_POST_TYPE })
 export const updateMessageActionCreator = (postMessage) => ({ type: UPDATE_POST_TEXT_TYPE, postMessage: postMessage })
+export const setStateAC = (posts) => ({ type: UPDATE_POST_TEXT_TYPE, posts: posts })

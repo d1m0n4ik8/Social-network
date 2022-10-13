@@ -1,45 +1,32 @@
 import React from 'react'
 import User from './User/User'
-import s from './User.module.css'
-import * as axios from 'axios'
+import s from './Users.module.css'
 
-class Users extends React.Component {
-   componentDidMount() {
-      axios.get(`http://localhost:3001/users?page=${this.props.currentPage}`).then((resolve) => {
-         this.props.setUsers(resolve.data)
-      })
+const Users = (props) => {
+   let pages = []
+   for (let i = 1; i <= props.amountPages; i++) {
+      pages.push(i)
    }
-   render = () => {
-      let users = this.props.users.map((user) => (
-         <User key={user.id} user={user} following={this.props.following} unfollowing={this.props.unfollowing} />
-      ))
-      let pages = []
-      for (let i = 1; i <= this.props.amountPages; i++) {
-         if (this.props.currentPage === i) {
-            pages.push(
-               <div key={i} className={s.activePage}>
-                  {i}
-               </div>
-            )
-         } else {
-            pages.push(
-               <div
-                  key={i}
-                  onClick={(e) => {
-                     this.props.changePage(e.target.innerHTML)
-                  }}
-                  className={s.page}>
-                  {i}
-               </div>
-            )
-         }
-      }
-      return (
-         <div>
-            <div className={s.users}>{users}</div>
-            <div className={s.paginations}>{pages}</div>
+   return (
+      <div>
+         <div className={s.users}>
+            {props.users.map((user) => (
+               <User key={user.id} user={user} following={props.following} unfollowing={props.unfollowing} />
+            ))}
          </div>
-      )
-   }
+         <div className={s.paginations}>
+            {pages.map((p) => {
+               return (
+                  <span
+                     key={p}
+                     className={props.currentPage === p ? s.activePage : s.page}
+                     onClick={() => props.changePage(p)}>
+                     {p}
+                  </span>
+               )
+            })}
+         </div>
+      </div>
+   )
 }
 export default Users

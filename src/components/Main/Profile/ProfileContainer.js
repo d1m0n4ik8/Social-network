@@ -1,4 +1,4 @@
-import { addPostActionCreator, updateMessageActionCreator } from '../../../Redux/profileReducer'
+import { addPostActionCreator, setStateAC, updateMessageActionCreator } from '../../../Redux/profileReducer'
 import Profile from './Profile'
 import { connect } from 'react-redux'
 
@@ -15,6 +15,9 @@ const DispatchToProps = (dispatch) => {
       },
       addPost: () => {
          dispatch(addPostActionCreator())
+      },
+      setState: (posts) => {
+         dispatch(setStateAC(posts))
       },
    }
 }
