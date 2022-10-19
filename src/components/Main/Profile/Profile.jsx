@@ -7,7 +7,7 @@ const Profile = (props) => {
 
    let textChange = () => {
       let text = newPostElement.current.value
-      props.onPostChange(text)
+      props.updateMessage(text)
    }
    return (
       <main className={s.main}>

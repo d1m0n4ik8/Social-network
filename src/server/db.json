@@ -164,6 +164,21 @@
          },
          "followed": false,
          "page": 3
+      },
+      {
+         "id": 11,
+         "avatar": "https://cdn-icons-png.flaticon.com/512/147/147141.png",
+         "fullName": {
+            "firstName": "Ruslan",
+            "secondName": "Pitel"
+         },
+         "status": "Bussiness maker",
+         "location": {
+            "city": "New-York",
+            "country": "USA"
+         },
+         "followed": true,
+         "page": 3
       }
    ],
    "dialog": [
