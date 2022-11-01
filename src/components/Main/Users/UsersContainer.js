@@ -2,22 +2,22 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { changePage, follow, setUsers, toggleIsFetching, unfollow } from '../../../Redux/usersReducer'
 import Users from './Users'
-import * as axios from 'axios'
 import Spinner from '../../../common/Spinner'
+import { usersAPI } from '../../../api/api'
 
 class UsersApiComponent extends React.Component {
    componentDidMount = () => {
       this.props.toggleIsFetching(true)
-      axios.get(`http://localhost:3001/users?page=${this.props.currentPage}`).then((resolve) => {
+      usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then((data) => {
          this.props.toggleIsFetching(false)
-         this.props.setUsers(resolve.data)
+         this.props.setUsers(data.items)
       })
    }
    changePage = (currentPage) => {
       this.props.toggleIsFetching(true)
-      axios.get(`http://localhost:3001/users?page=${currentPage}`).then((resolve) => {
+      usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then((data) => {
          this.props.toggleIsFetching(false)
-         this.props.setUsers(resolve.data)
+         this.props.setUsers(data.items)
       })
       this.props.changePage(currentPage)
    }

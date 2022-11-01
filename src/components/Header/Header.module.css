@@ -12,6 +12,7 @@
 .logo {
    display: flex;
    align-items: center;
+   justify-content: space-between;
    color: #764dbe;
    font-style: italic;
    font-weight: 600;

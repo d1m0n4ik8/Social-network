@@ -167,7 +167,7 @@
       },
       {
          "id": 11,
-         "avatar": "https://cdn-icons-png.flaticon.com/512/147/147141.png",
+         "avatar": "https://cdn-icons-png.flaticon.com/512/147/147131.png",
          "fullName": {
             "firstName": "Ruslan",
             "secondName": "Pitel"
@@ -261,17 +261,283 @@
       { "id": 8, "message": "WTF?" },
       { "id": 9, "message": "Good morning!" }
    ],
-   "posts": [
-      { "id": 0, "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png", "message": "Hello, how are you?" },
-      { "id": 1, "image": "https://cdn-icons-png.flaticon.com/512/147/147131.png", "message": "I'm fine" },
-      { "id": 2, "image": "https://cdn-icons-png.flaticon.com/512/147/147132.png", "message": "And you" },
-      { "id": 3, "image": "https://cdn-icons-png.flaticon.com/512/147/147133.png", "message": "Samurai" },
-      { "id": 4, "image": "https://cdn-icons-png.flaticon.com/512/147/147134.png", "message": "Jedai" },
-      { "id": 5, "image": "https://cdn-icons-png.flaticon.com/512/147/147135.png", "message": "Sith" },
-      { "id": 6, "image": "https://cdn-icons-png.flaticon.com/512/147/147136.png", "message": "I'm OK" },
-      { "id": 7, "image": "https://cdn-icons-png.flaticon.com/512/147/147137.png", "message": "I'm the best" },
-      { "id": 8, "image": "https://cdn-icons-png.flaticon.com/512/147/147138.png", "message": "Who you?" },
-      { "id": 9, "image": "https://cdn-icons-png.flaticon.com/512/147/147139.png", "message": "Terminator" },
-      { "id": 10, "image": "https://cdn-icons-png.flaticon.com/512/147/147140.png", "message": "Ok" }
-   ]
+   "profile": [
+      {
+         "id": 0,
+         "avatar": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+         "posts": [
+            {
+               "id": 0,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "Hello, how are you?"
+            },
+            {
+               "id": 1,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "I'm OK"
+            },
+            {
+               "id": 2,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "And you"
+            }
+         ]
+      },
+      {
+         "id": 1,
+         "avatar": "https://cdn-icons-png.flaticon.com/512/147/147131.png",
+         "posts": [
+            {
+               "id": 0,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "I'm fine"
+            },
+            {
+               "id": 1,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "Thanks"
+            },
+            {
+               "id": 2,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "What about you?"
+            }
+         ]
+      },
+      {
+         "id": 2,
+         "avatar": "https://cdn-icons-png.flaticon.com/512/147/147132.png",
+         "posts": [
+            {
+               "id": 0,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "And you"
+            },
+            {
+               "id": 1,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "And you"
+            },
+            {
+               "id": 2,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "And you"
+            }
+         ]
+      },
+      {
+         "id": 3,
+         "avatar": "https://cdn-icons-png.flaticon.com/512/147/147133.png",
+         "posts": [
+            {
+               "id": 0,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "Samurai"
+            },
+            {
+               "id": 1,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "Samurai"
+            },
+            {
+               "id": 2,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "Samurai"
+            }
+         ]
+      },
+      {
+         "id": 4,
+         "avatar": "https://cdn-icons-png.flaticon.com/512/147/147134.png",
+         "posts": [
+            {
+               "id": 0,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "Jedai"
+            },
+            {
+               "id": 1,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "Jedai"
+            },
+            {
+               "id": 2,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "Jedai"
+            }
+         ]
+      },
+      {
+         "id": 5,
+         "avatar": "https://cdn-icons-png.flaticon.com/512/147/147135.png",
+         "posts": [
+            {
+               "id": 0,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "Sith"
+            },
+            {
+               "id": 1,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "Sith"
+            },
+            {
+               "id": 2,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "Sith"
+            },
+            {
+               "id": 3,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "Sith"
+            }
+         ]
+      },
+      {
+         "id": 6,
+         "avatar": "https://cdn-icons-png.flaticon.com/512/147/147136.png",
+         "posts": [
+            {
+               "id": 0,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "I'm OK"
+            },
+            {
+               "id": 1,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "I'm OK"
+            },
+            {
+               "id": 2,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "I'm OK"
+            }
+         ]
+      },
+      {
+         "id": 7,
+         "avatar": "https://cdn-icons-png.flaticon.com/512/147/147137.png",
+         "posts": [
+            {
+               "id": 0,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "I'm the best"
+            },
+            {
+               "id": 1,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "I'm the best"
+            },
+            {
+               "id": 2,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "I'm the best"
+            }
+         ]
+      },
+      {
+         "id": 8,
+         "avatar": "https://cdn-icons-png.flaticon.com/512/147/147138.png",
+         "posts": [
+            {
+               "id": 0,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "Who you?"
+            },
+            {
+               "id": 1,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "Who you?"
+            },
+            {
+               "id": 2,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "Who you?"
+            },
+            {
+               "id": 3,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "Who you?"
+            }
+         ]
+      },
+      {
+         "id": 9,
+         "avatar": "https://cdn-icons-png.flaticon.com/512/147/147139.png",
+         "message": "Terminator",
+         "posts": [
+            {
+               "id": 0,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "Terminator"
+            },
+            {
+               "id": 1,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "Terminator"
+            },
+            {
+               "id": 2,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "Terminator"
+            },
+            {
+               "id": 3,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "Terminator"
+            }
+         ]
+      },
+      {
+         "id": 10,
+         "avatar": "https://cdn-icons-png.flaticon.com/512/147/147140.png",
+         "posts": [
+            {
+               "id": 0,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "Ok"
+            },
+            {
+               "id": 1,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "Ok"
+            },
+            {
+               "id": 2,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "Ok"
+            }
+         ]
+      },
+      {
+         "id": 11,
+         "avatar": "https://cdn-icons-png.flaticon.com/512/147/147140.png",
+         "posts": [
+            {
+               "id": 0,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "123"
+            },
+            {
+               "id": 1,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "123"
+            },
+            {
+               "id": 2,
+               "image": "https://cdn-icons-png.flaticon.com/512/147/147130.png",
+               "message": "123"
+            }
+         ]
+      }
+   ],
+   "auth": {
+      "me": {
+         "data": { "id": 1, "login": "d1m0n4ik", "email": "svyryd2012@gmail.com" },
+         "messages": [],
+         "fieldsErrors": [],
+         "resultCode": 0
+      },
+      "error": { "data": {}, "messages": ["You are not authorized"], "fieldsErrors": [], "resultCode": 1 }
+   }
 }

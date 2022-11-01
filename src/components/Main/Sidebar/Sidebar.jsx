@@ -6,32 +6,32 @@ const Sidebar = () => {
       <nav className={s.nav}>
          <ul className={s.nav_links}>
             <li>
-               <NavLink to="/Profile" className={({ isActive }) => (isActive ? s.active : '')}>
+               <NavLink to="/profile/" className={({ isActive }) => (isActive ? s.active : '')}>
                   Profile
                </NavLink>
             </li>
             <li>
-               <NavLink to="/Messages" className={({ isActive }) => (isActive ? s.active : '')}>
+               <NavLink to="/messages" className={({ isActive }) => (isActive ? s.active : '')}>
                   Messages
                </NavLink>
             </li>
             <li>
-               <NavLink to="/Users" className={({ isActive }) => (isActive ? s.active : '')}>
+               <NavLink to="/users" className={({ isActive }) => (isActive ? s.active : '')}>
                   Users
                </NavLink>
             </li>
             <li>
-               <NavLink to="/News" className={({ isActive }) => (isActive ? s.active : '')}>
+               <NavLink to="/news" className={({ isActive }) => (isActive ? s.active : '')}>
                   News
                </NavLink>
             </li>
             <li>
-               <NavLink to="/Music" className={({ isActive }) => (isActive ? s.active : '')}>
+               <NavLink to="/music" className={({ isActive }) => (isActive ? s.active : '')}>
                   Music
                </NavLink>
             </li>
             <li>
-               <NavLink to="/Settings" className={({ isActive }) => (isActive ? s.active : '')}>
+               <NavLink to="/settings" className={({ isActive }) => (isActive ? s.active : '')}>
                   Settings
                </NavLink>
             </li>

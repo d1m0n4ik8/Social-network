@@ -1,10 +1,20 @@
 .users {
    width: 100%;
+   margin-bottom: 20px;
 }
-.activePage {
-   font-size: 25px;
-   color: blue;
+.paginations {
+   display: flex;
+   justify-content: center;
+   margin: 0 auto;
+   padding: 20px 10px;
 }
+.activePage,
 .page {
    font-size: 16px;
+   padding: 10px 15px;
+   border: 1px solid blueviolet;
+   cursor: pointer;
+}
+.activePage {
+   background-color: blueviolet;
 }
