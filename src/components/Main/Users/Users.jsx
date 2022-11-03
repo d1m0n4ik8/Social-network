@@ -11,7 +11,14 @@ const Users = (props) => {
       <div>
          <div className={s.users}>
             {props.users.map((user) => (
-               <User key={user.id} user={user} follow={props.follow} unfollow={props.unfollow} />
+               <User
+                  key={user.id}
+                  user={user}
+                  follow={props.follow}
+                  unfollow={props.unfollow}
+                  followingInProgress={props.followingInProgress}
+                  toggleFollowingProcces={props.toggleFollowingProcces}
+               />
             ))}
          </div>
          <div className={s.paginations}>

@@ -23,7 +23,7 @@ const App = () => {
             </div>
             <div className="main">
                <Routes>
-                  <Route path="/login" element={<Login />} />
+                  <Route path="login" element={<Login />} />
                   <Route path="/" element={<Home />} />
                   <Route path="profile" element={<ProfileContainer />}>
                      <Route path=":userId" element={<ProfileContainer />} />

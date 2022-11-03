@@ -1,22 +1,20 @@
 import React from 'react'
-import { addPost, setState, updateMessage, toggleIsFetching } from '../../../Redux/profileReducer'
+import { addPost, updateMessage, getProfile } from '../../../Redux/profileReducer'
 import Profile from './Profile'
 import { connect } from 'react-redux'
 import Spinner from '../../../common/Spinner'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
-import { profileAPI } from '../../../api/api'
+import { withAuthRedirection } from '../../../hoc/withAuthRedirection'
 
 class ProfileApiComponent extends React.Component {
    componentDidMount = () => {
       let userId = this.props.router.params.userId
       if (!userId) userId = 2
-      this.props.toggleIsFetching(true)
-      profileAPI.getProfile(userId).then((data) => {
-         this.props.toggleIsFetching(false)
-         this.props.setState(data)
-      })
+      this.props.getProfile(userId)
    }
-   render = () => <>{this.props.isFetching ? <Spinner /> : <Profile {...this.props} />}</>
+   render = () => {
+      return <>{this.props.isFetching ? <Spinner /> : <Profile {...this.props} />}</>
+   }
 }
 
 const MapStateToProps = (state) => {
@@ -24,6 +22,7 @@ const MapStateToProps = (state) => {
       posts: state.profilePage.posts,
       newPostMessage: state.profilePage.newPostMessage,
       isFetching: state.profilePage.isFetching,
+      isAuth: state.auth.isAuth,
    }
 }
 // const DispatchToProps = (dispatch) => {
@@ -50,8 +49,9 @@ function withRouter(Component) {
 
    return ComponentWithRouterProp
 }
+
 const ProfileApiWithRouter = withRouter(ProfileApiComponent)
-const ProfileContainer = connect(MapStateToProps, { updateMessage, setState, addPost, toggleIsFetching })(
-   ProfileApiWithRouter
+const ProfileContainer = withAuthRedirection(
+   connect(MapStateToProps, { updateMessage, addPost, getProfile })(ProfileApiWithRouter)
 )
 export default ProfileContainer

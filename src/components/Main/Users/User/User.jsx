@@ -2,17 +2,13 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import s from './User.module.css'
 import avatar from '../../../../assets/userAvatar.png'
-import { usersAPI } from '../../../../api/api'
+
 const User = (props) => {
    const follow = () => {
-      usersAPI.follow(props.user.id).then((data) => {
-         if (data.resultCode === 0) props.follow(props.user.id)
-      })
+      props.follow(props.user.id)
    }
    const unfollow = () => {
-      usersAPI.unfollow(props.user.id).then((data) => {
-         if (data.resultCode === 0) props.unfollow(props.user.id)
-      })
+      props.unfollow(props.user.id)
    }
    return (
       <div className={s.user}>
@@ -24,11 +20,16 @@ const User = (props) => {
          </NavLink>
          <div className={s.following}>
             {props.user.followed ? (
-               <button className={s.unfollow} onClick={unfollow}>
+               <button
+                  disabled={props.followingInProgress.some((id) => id === props.user.id)}
+                  className={s.unfollow}
+                  onClick={unfollow}>
                   Unfollow
                </button>
             ) : (
-               <button onClick={follow}>Follow</button>
+               <button disabled={props.followingInProgress.some((id) => id === props.user.id)} onClick={follow}>
+                  Follow
+               </button>
             )}
          </div>
          <div className={s.about}>

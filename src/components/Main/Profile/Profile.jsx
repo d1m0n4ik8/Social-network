@@ -1,6 +1,7 @@
 import React from 'react'
 import s from './Profile.module.css'
 import Post from './Posts/Post'
+
 const Profile = (props) => {
    let myPosts = props.posts.map((el) => <Post key={el.id} image={el.image} message={el.message} />)
    let newPostElement = React.createRef()

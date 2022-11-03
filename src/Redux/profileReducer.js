@@ -1,3 +1,4 @@
+import { profileAPI } from '../api/api'
 const ADD_POST_TYPE = 'ADD-NEW-POST'
 const UPDATE_POST_TEXT_TYPE = 'UPDATE-POST'
 const SET_STATE = 'SET_STATE'
@@ -65,3 +66,11 @@ export const addPost = () => ({ type: ADD_POST_TYPE })
 export const updateMessage = (postMessage) => ({ type: UPDATE_POST_TEXT_TYPE, postMessage })
 export const setState = (state) => ({ type: SET_STATE, state })
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching })
+
+export const getProfile = (userId) => (dispatch) => {
+   dispatch(toggleIsFetching(true))
+   profileAPI.getProfile(userId).then((data) => {
+      dispatch(toggleIsFetching(false))
+      dispatch(setState(data))
+   })
+}
