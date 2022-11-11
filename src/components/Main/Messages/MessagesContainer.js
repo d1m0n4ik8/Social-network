@@ -2,6 +2,7 @@ import { addNewMessageCreator, updateMessageCreator } from '../../../Redux/dialo
 import Messages from './Messages'
 import { connect } from 'react-redux'
 import { withAuthRedirection } from '../../../hoc/withAuthRedirection'
+import { compose } from 'redux'
 
 const MapStateToProps = (state) => {
    return {
@@ -21,6 +22,4 @@ const MapDispatchToProps = (dispatch) => {
       },
    }
 }
-
-const MessagesContainer = withAuthRedirection(connect(MapStateToProps, MapDispatchToProps)(Messages))
-export default MessagesContainer
+export default compose(connect(MapStateToProps, MapDispatchToProps), withAuthRedirection)(Messages)

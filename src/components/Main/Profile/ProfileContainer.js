@@ -1,16 +1,18 @@
 import React from 'react'
-import { addPost, updateMessage, getProfile } from '../../../Redux/profileReducer'
+import { addPost, updateMessage, getProfile, getUserStatus, updateUserStatus } from '../../../Redux/profileReducer'
 import Profile from './Profile'
 import { connect } from 'react-redux'
 import Spinner from '../../../common/Spinner'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
-import { withAuthRedirection } from '../../../hoc/withAuthRedirection'
+//import { withAuthRedirection } from '../../../hoc/withAuthRedirection'
+import { withRouter } from '../../../hoc/withRouter'
+import { compose } from 'redux'
 
 class ProfileApiComponent extends React.Component {
    componentDidMount = () => {
       let userId = this.props.router.params.userId
-      if (!userId) userId = 2
+      if (!userId) userId = 26450
       this.props.getProfile(userId)
+      this.props.getUserStatus(userId)
    }
    render = () => {
       return <>{this.props.isFetching ? <Spinner /> : <Profile {...this.props} />}</>
@@ -23,6 +25,8 @@ const MapStateToProps = (state) => {
       newPostMessage: state.profilePage.newPostMessage,
       isFetching: state.profilePage.isFetching,
       isAuth: state.auth.isAuth,
+      status: state.profilePage.status,
+      profile: state.profilePage.profile,
    }
 }
 // const DispatchToProps = (dispatch) => {
@@ -39,19 +43,8 @@ const MapStateToProps = (state) => {
 //    }
 // }
 
-function withRouter(Component) {
-   function ComponentWithRouterProp(props) {
-      let location = useLocation()
-      let navigate = useNavigate()
-      let params = useParams()
-      return <Component {...props} router={{ location, navigate, params }} />
-   }
-
-   return ComponentWithRouterProp
-}
-
-const ProfileApiWithRouter = withRouter(ProfileApiComponent)
-const ProfileContainer = withAuthRedirection(
-   connect(MapStateToProps, { updateMessage, addPost, getProfile })(ProfileApiWithRouter)
-)
-export default ProfileContainer
+export default compose(
+   connect(MapStateToProps, { updateMessage, addPost, getProfile, getUserStatus, updateUserStatus }),
+   //withAuthRedirection,
+   withRouter
+)(ProfileApiComponent)
