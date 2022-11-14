@@ -3,15 +3,13 @@ import s from './Profile.module.css'
 import Post from './Posts/Post'
 import avatar from '../../../assets/userAvatar.png'
 import ProfileStatus from './ProfileStatus'
+import AddNewPostForm from './AddPostForm'
 
 const Profile = (props) => {
-   let myPosts = props.posts.map((el) => <Post key={el.id} image={el.image} message={el.message} />)
-   let newPostElement = React.createRef()
-
-   let textChange = () => {
-      let text = newPostElement.current.value
-      props.updateMessage(text)
+   const addNewPost = (values) => {
+      props.addPost(values.postMessage)
    }
+   let myPosts = props.posts.map((el) => <Post key={el.id} image={el.image} message={el.message} />)
    return (
       <main className={s.main}>
          <div className={s.main_img}>
@@ -19,12 +17,7 @@ const Profile = (props) => {
          </div>
          <div className={s.name}>{props.profile.fullName}</div>
          <ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus} />
-         <textarea className={s.textarea} ref={newPostElement} onChange={textChange} value={props.newPostMessage} />
-         <div>
-            <button className={s.btn} onClick={props.addPost}>
-               Add post
-            </button>
-         </div>
+         <AddNewPostForm onSubmit={addNewPost} />
          {myPosts}
       </main>
    )

@@ -1,6 +1,5 @@
 import { profileAPI } from '../api/api'
 const ADD_POST_TYPE = 'ADD-NEW-POST'
-const UPDATE_POST_TEXT_TYPE = 'UPDATE-POST'
 const SET_PROFILE = 'SET_PROFILE'
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 const SET_USER_STATUS = 'SET_USER_STATUS'
@@ -32,7 +31,6 @@ let initState = {
       { id: 1, image: 'https://cdn-icons-png.flaticon.com/512/147/147131.png', message: "Hello, I'm fine, and you?" },
       { id: 2, image: 'https://cdn-icons-png.flaticon.com/512/147/147132.png', message: "I'm OK" },
    ],
-   newPostMessage: '',
    isFetching: false,
    status: '',
 }
@@ -42,12 +40,9 @@ const profileReducer = (state = initState, action) => {
          let post = {
             id: state.posts.length,
             image: `https://cdn-icons-png.flaticon.com/512/147/14713${state.posts.length}.png`,
-            message: state.newPostMessage,
+            message: action.message,
          }
          return { ...state, posts: [...state.posts, post] }
-      }
-      case UPDATE_POST_TEXT_TYPE: {
-         return { ...state, newPostMessage: action.postMessage }
       }
       case SET_PROFILE:
          return {
@@ -71,8 +66,7 @@ const profileReducer = (state = initState, action) => {
 
 export default profileReducer
 
-export const addPost = () => ({ type: ADD_POST_TYPE })
-export const updateMessage = (postMessage) => ({ type: UPDATE_POST_TEXT_TYPE, postMessage })
+export const addPost = (message) => ({ type: ADD_POST_TYPE, message })
 export const setProfile = (profile) => ({ type: SET_PROFILE, profile })
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching })
 export const setUserStatus = (status) => ({ type: SET_USER_STATUS, status })

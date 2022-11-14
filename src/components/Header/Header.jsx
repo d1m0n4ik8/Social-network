@@ -1,6 +1,7 @@
 import React from 'react'
 import s from './Header.module.css'
 import { NavLink } from 'react-router-dom'
+
 const Header = (props) => {
    return (
       <header className={s.header}>
@@ -9,7 +10,12 @@ const Header = (props) => {
                <div>Dimality</div>
             </NavLink>
             {props.isAuth ? (
-               props.login
+               <div className={s.login}>
+                  {props.login}
+                  <button className={s.logout} onClick={props.logout}>
+                     logout
+                  </button>
+               </div>
             ) : (
                <NavLink to="/login">
                   <div className={s.auth}>Вхід</div>

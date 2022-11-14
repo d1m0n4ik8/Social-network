@@ -1,39 +1,47 @@
-import React from 'react'
+import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-const Login = () => {
+import { maxLengthCreator, requaired } from '../../common/Validation/Validation'
+import { Input } from '../../common/Validation/ValidationForm'
+import { login } from '../../Redux/authReducer'
+import s from './Login.module.css'
+import { Navigate } from 'react-router-dom'
+
+const Login = (props) => {
    const onSubmit = (formData) => {
-      console.log(formData)
+      props.login(formData.login, formData.password, formData.rememberMe)
    }
+   if (props.isAuth) return <Navigate replace to="/profile" />
    return (
       <div>
          <div>
             <h1>Login</h1>
          </div>
-         <LoginReduxForm onSubmit={onSubmit} />
+         <LoginForm onSubmit={onSubmit} />
       </div>
    )
 }
-class LoginForm extends React.Component {
-   render() {
-      return (
-         <>
-            <form onSubmit={this.props.handleSubmit}>
-               <div>
-                  <Field placeholder="login" name={'login'} component={'input'} />
-               </div>
-               <div>
-                  <Field placeholder="password" name={'password'} component={'input'} />
-               </div>
-               <div>
-                  <Field name={'rememberMe'} type={'checkBox'} component={'input'} />
-                  Remember me
-               </div>
-               <button>log in</button>
-            </form>
-         </>
-      )
-   }
+const maxLength30 = maxLengthCreator(30)
+let LoginForm = (props) => {
+   return (
+      <form onSubmit={props.handleSubmit}>
+         <div>
+            <Field placeholder="login" validate={[requaired, maxLength30]} name={'login'} component={Input} />
+         </div>
+         <div>
+            <Field placeholder="password" validate={[requaired, maxLength30]} name={'password'} component={Input} />
+         </div>
+         <div className={s.rememberMe}>
+            <Field name={'rememberMe'} type={'checkBox'} component={Input} />
+            Remember me
+         </div>
+         <button>log in</button>
+         {props.error && <divc className={s.summaryError}>{props.error}</divc>}
+      </form>
+   )
 }
-const LoginReduxForm = reduxForm({ form: 'loginForm' })(LoginForm)
+LoginForm = reduxForm({ form: 'loginForm' })(LoginForm)
 
-export default Login
+let mapStateToProps = (state) => ({
+   isAuth: state.auth.isAuth,
+})
+export default connect(mapStateToProps, { login })(Login)

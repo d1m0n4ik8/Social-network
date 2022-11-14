@@ -1,4 +1,4 @@
-import { addNewMessageCreator, updateMessageCreator } from '../../../Redux/dialogReducer'
+import { addNewMessage } from '../../../Redux/dialogReducer'
 import Messages from './Messages'
 import { connect } from 'react-redux'
 import { withAuthRedirection } from '../../../hoc/withAuthRedirection'
@@ -12,14 +12,4 @@ const MapStateToProps = (state) => {
       isAuth: state.auth.isAuth,
    }
 }
-const MapDispatchToProps = (dispatch) => {
-   return {
-      changeNewMessage: (text) => {
-         dispatch(updateMessageCreator(text))
-      },
-      addNewMessage: () => {
-         dispatch(addNewMessageCreator())
-      },
-   }
-}
-export default compose(connect(MapStateToProps, MapDispatchToProps), withAuthRedirection)(Messages)
+export default compose(connect(MapStateToProps, { addNewMessage }), withAuthRedirection)(Messages)

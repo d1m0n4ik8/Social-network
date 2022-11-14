@@ -22,18 +22,26 @@
    border-radius: 20px;
    padding: 20px;
 }
-.send {
+.form,
+.form div {
+   width: 100%;
    display: flex;
    justify-content: space-between;
+   align-items: center;
 }
+.form div {
+   flex-direction: column;
+}
+
 .textarea {
    border-radius: 10px;
    resize: none;
-   width: 80%;
+   width: 100%;
    padding: 10px;
 }
 .btn {
    border-radius: 10px;
    background-color: blueviolet;
    width: 18%;
+   height: 100%;
 }
