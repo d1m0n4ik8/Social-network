@@ -20,10 +20,10 @@ export const authAPI = {
 }
 
 export const profileAPI = {
-   getProfile(userId) {
+   requestProfile(userId) {
       return instance.get('profile/' + userId).then((response) => response.data)
    },
-   getStatus(userId) {
+   requestStatus(userId) {
       return instance.get('profile/status/' + userId).then((response) => response.data)
    },
    updateStatus(status) {
@@ -32,7 +32,7 @@ export const profileAPI = {
 }
 
 export const usersAPI = {
-   getUsers(currentPage = 1, pageSize = 10) {
+   requestUsers(currentPage = 1, pageSize = 10) {
       return instance.get(`users?page=${currentPage}&count=${pageSize}`).then((response) => response.data)
    },
    follow(userId) {

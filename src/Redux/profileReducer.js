@@ -71,16 +71,16 @@ export const setProfile = (profile) => ({ type: SET_PROFILE, profile })
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching })
 export const setUserStatus = (status) => ({ type: SET_USER_STATUS, status })
 
-export const getProfile = (userId) => (dispatch) => {
+export const requestProfile = (userId) => (dispatch) => {
    dispatch(toggleIsFetching(true))
-   profileAPI.getProfile(userId).then((data) => {
+   profileAPI.requestProfile(userId).then((data) => {
       dispatch(toggleIsFetching(false))
       dispatch(setProfile(data))
    })
 }
 
 export const getUserStatus = (userId) => (dispatch) => {
-   profileAPI.getStatus(userId).then((data) => {
+   profileAPI.requestStatus(userId).then((data) => {
       dispatch(setUserStatus(data))
    })
 }

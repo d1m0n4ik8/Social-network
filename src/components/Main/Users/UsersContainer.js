@@ -1,16 +1,23 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { changePage, follow, unfollow, getUsers } from '../../../Redux/usersReducer'
+import { changePage, follow, unfollow, requestUsers } from '../../../Redux/usersReducer'
 import Users from './Users'
 import Spinner from '../../../common/Spinner'
 import { compose } from 'redux'
+import {
+   getAmountPages,
+   getCurrentPage,
+   getFollowingInProgress,
+   getIsFetching,
+   getUsers,
+} from '../../../Redux/usersSelectors'
 
 class UsersApiComponent extends React.Component {
    componentDidMount = () => {
-      this.props.getUsers(this.props.currentPage, this.props.pageSize)
+      this.props.requestUsers(this.props.currentPage, this.props.pageSize)
    }
    changePage = (currentPage) => {
-      this.props.getUsers(currentPage, this.props.pageSize)
+      this.props.requestUsers(currentPage, this.props.pageSize)
       this.props.changePage(currentPage)
    }
    render = () => <>{this.props.isFetching ? <Spinner /> : <Users {...this.props} changePage={this.changePage} />}</>
@@ -18,11 +25,11 @@ class UsersApiComponent extends React.Component {
 
 const MapStateToProps = (state) => {
    return {
-      users: state.usersPage.users,
-      amountPages: state.usersPage.amountPages,
-      currentPage: state.usersPage.currentPage,
-      isFetching: state.usersPage.isFetching,
-      followingInProgress: state.usersPage.followingInProgress,
+      users: getUsers(state),
+      amountPages: getAmountPages(state),
+      currentPage: getCurrentPage(state),
+      isFetching: getIsFetching(state),
+      followingInProgress: getFollowingInProgress(state),
    }
 }
 // const DispatchToProps = (dispatch) => {
@@ -49,6 +56,6 @@ export default compose(
       follow,
       unfollow,
       changePage,
-      getUsers,
+      requestUsers,
    })
 )(UsersApiComponent)

@@ -1,17 +1,26 @@
 import React from 'react'
-import { addPost, getProfile, getUserStatus, updateUserStatus } from '../../../Redux/profileReducer'
+import { addPost, requestProfile, getUserStatus, updateUserStatus } from '../../../Redux/profileReducer'
 import Profile from './Profile'
 import { connect } from 'react-redux'
 import Spinner from '../../../common/Spinner'
 import { withAuthRedirection } from '../../../hoc/withAuthRedirection'
 import { withRouter } from '../../../hoc/withRouter'
 import { compose } from 'redux'
+import {
+   getId,
+   getIsFetching,
+   getNewPostMessage,
+   getPosts,
+   getProfile,
+   getStatus,
+} from '../../../Redux/profileSelectors'
+import { getIsAuth } from '../../../Redux/authSelectors'
 
 class ProfileApiComponent extends React.Component {
    componentDidMount = () => {
       let userId = this.props.router.params.userId
       if (!userId) userId = this.props.id
-      this.props.getProfile(userId)
+      this.props.requestProfile(userId)
       this.props.getUserStatus(userId)
    }
    render = () => {
@@ -21,13 +30,13 @@ class ProfileApiComponent extends React.Component {
 
 const MapStateToProps = (state) => {
    return {
-      posts: state.profilePage.posts,
-      newPostMessage: state.profilePage.newPostMessage,
-      isFetching: state.profilePage.isFetching,
-      isAuth: state.auth.isAuth,
-      status: state.profilePage.status,
-      profile: state.profilePage.profile,
-      id: state.auth.id,
+      posts: getPosts(state),
+      newPostMessage: getNewPostMessage(state),
+      isFetching: getIsFetching(state),
+      isAuth: getIsAuth(state),
+      status: getStatus(state),
+      profile: getProfile(state),
+      id: getId(state),
    }
 }
 // const DispatchToProps = (dispatch) => {
@@ -45,7 +54,7 @@ const MapStateToProps = (state) => {
 // }
 
 export default compose(
-   connect(MapStateToProps, { addPost, getProfile, getUserStatus, updateUserStatus }),
+   connect(MapStateToProps, { addPost, requestProfile, getUserStatus, updateUserStatus }),
    withAuthRedirection,
    withRouter
 )(ProfileApiComponent)
