@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/gitname/react-gh-pages/static/css/main.07117e1f.css",
-    "main.js": "/gitname/react-gh-pages/static/js/main.8a94a43e.js",
-    "static/css/189.b75303a2.chunk.css": "/gitname/react-gh-pages/static/css/189.b75303a2.chunk.css",
-    "static/js/189.44f41ac3.chunk.js": "/gitname/react-gh-pages/static/js/189.44f41ac3.chunk.js",
-    "static/css/265.92d23f4c.chunk.css": "/gitname/react-gh-pages/static/css/265.92d23f4c.chunk.css",
-    "static/js/265.15458df1.chunk.js": "/gitname/react-gh-pages/static/js/265.15458df1.chunk.js",
-    "static/css/294.eef1c88b.chunk.css": "/gitname/react-gh-pages/static/css/294.eef1c88b.chunk.css",
-    "static/js/294.920dc1e3.chunk.js": "/gitname/react-gh-pages/static/js/294.920dc1e3.chunk.js",
-    "static/js/787.28cb0dcd.chunk.js": "/gitname/react-gh-pages/static/js/787.28cb0dcd.chunk.js",
-    "static/media/userAvatar.png": "/gitname/react-gh-pages/static/media/userAvatar.f4b7b33c415b11a7a660.png",
-    "static/media/spinner.svg": "/gitname/react-gh-pages/static/media/spinner.40b7cbcda9210b30022cf0d5a019c9a7.svg",
-    "index.html": "/gitname/react-gh-pages/index.html",
-    "main.07117e1f.css.map": "/gitname/react-gh-pages/static/css/main.07117e1f.css.map",
-    "main.8a94a43e.js.map": "/gitname/react-gh-pages/static/js/main.8a94a43e.js.map",
-    "189.b75303a2.chunk.css.map": "/gitname/react-gh-pages/static/css/189.b75303a2.chunk.css.map",
-    "189.44f41ac3.chunk.js.map": "/gitname/react-gh-pages/static/js/189.44f41ac3.chunk.js.map",
-    "265.92d23f4c.chunk.css.map": "/gitname/react-gh-pages/static/css/265.92d23f4c.chunk.css.map",
-    "265.15458df1.chunk.js.map": "/gitname/react-gh-pages/static/js/265.15458df1.chunk.js.map",
-    "294.eef1c88b.chunk.css.map": "/gitname/react-gh-pages/static/css/294.eef1c88b.chunk.css.map",
-    "294.920dc1e3.chunk.js.map": "/gitname/react-gh-pages/static/js/294.920dc1e3.chunk.js.map",
-    "787.28cb0dcd.chunk.js.map": "/gitname/react-gh-pages/static/js/787.28cb0dcd.chunk.js.map"
+    "main.css": "/Social-network/static/css/main.07117e1f.css",
+    "main.js": "/Social-network/static/js/main.366cfcc2.js",
+    "static/css/189.b75303a2.chunk.css": "/Social-network/static/css/189.b75303a2.chunk.css",
+    "static/js/189.44f41ac3.chunk.js": "/Social-network/static/js/189.44f41ac3.chunk.js",
+    "static/css/265.92d23f4c.chunk.css": "/Social-network/static/css/265.92d23f4c.chunk.css",
+    "static/js/265.15458df1.chunk.js": "/Social-network/static/js/265.15458df1.chunk.js",
+    "static/css/294.eef1c88b.chunk.css": "/Social-network/static/css/294.eef1c88b.chunk.css",
+    "static/js/294.920dc1e3.chunk.js": "/Social-network/static/js/294.920dc1e3.chunk.js",
+    "static/js/787.28cb0dcd.chunk.js": "/Social-network/static/js/787.28cb0dcd.chunk.js",
+    "static/media/userAvatar.png": "/Social-network/static/media/userAvatar.f4b7b33c415b11a7a660.png",
+    "static/media/spinner.svg": "/Social-network/static/media/spinner.40b7cbcda9210b30022cf0d5a019c9a7.svg",
+    "index.html": "/Social-network/index.html",
+    "main.07117e1f.css.map": "/Social-network/static/css/main.07117e1f.css.map",
+    "main.366cfcc2.js.map": "/Social-network/static/js/main.366cfcc2.js.map",
+    "189.b75303a2.chunk.css.map": "/Social-network/static/css/189.b75303a2.chunk.css.map",
+    "189.44f41ac3.chunk.js.map": "/Social-network/static/js/189.44f41ac3.chunk.js.map",
+    "265.92d23f4c.chunk.css.map": "/Social-network/static/css/265.92d23f4c.chunk.css.map",
+    "265.15458df1.chunk.js.map": "/Social-network/static/js/265.15458df1.chunk.js.map",
+    "294.eef1c88b.chunk.css.map": "/Social-network/static/css/294.eef1c88b.chunk.css.map",
+    "294.920dc1e3.chunk.js.map": "/Social-network/static/js/294.920dc1e3.chunk.js.map",
+    "787.28cb0dcd.chunk.js.map": "/Social-network/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.07117e1f.css",
-    "static/js/main.8a94a43e.js"
+    "static/js/main.366cfcc2.js"
   ]
 }
