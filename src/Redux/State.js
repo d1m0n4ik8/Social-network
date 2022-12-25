@@ -7,7 +7,12 @@ let store = {
          dialog: [
             { id: 0, name: 'Dima', surname: 'Svyryd', image: 'https://cdn-icons-png.flaticon.com/512/147/147140.png' },
             { id: 1, name: 'Max', surname: 'Bober', image: 'https://cdn-icons-png.flaticon.com/512/147/147144.png' },
-            { id: 2, name: 'Vova', surname: 'Beresten', image: 'https://cdn-icons-png.flaticon.com/512/147/147133.png' },
+            {
+               id: 2,
+               name: 'Vova',
+               surname: 'Beresten',
+               image: 'https://cdn-icons-png.flaticon.com/512/147/147133.png',
+            },
          ],
          messages: [
             { id: 0, message: 'Hello' },
@@ -19,7 +24,11 @@ let store = {
       profilePage: {
          posts: [
             { id: 0, image: 'https://cdn-icons-png.flaticon.com/512/147/147130.png', message: 'Hello, how are you?' },
-            { id: 1, image: 'https://cdn-icons-png.flaticon.com/512/147/147131.png', message: "Hello, I'm fine, and you?" },
+            {
+               id: 1,
+               image: 'https://cdn-icons-png.flaticon.com/512/147/147131.png',
+               message: "Hello, I'm fine, and you?",
+            },
             { id: 2, image: 'https://cdn-icons-png.flaticon.com/512/147/147132.png', message: "I'm OK" },
          ],
          newPostMessage: '',
@@ -36,7 +45,7 @@ let store = {
    },
    dispatch(action) {
       this._state.profilePage = profileReducer(this._state.profilePage, action)
-      this._state.messagesPag = dialogReducer(this._state.messagesPage, action)
+      this._state.messagesPage = dialogReducer(this._state.messagesPage, action)
       this._rerenderEntireTree(this._state)
    },
 }

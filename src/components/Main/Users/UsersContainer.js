@@ -1,33 +1,34 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { changePage, follow, unfollow, requestUsers } from '../../../Redux/usersReducer'
 import Users from './Users'
-import Spinner from '../../../common/Spinner'
 import { compose } from 'redux'
 import {
-   getAmountPages,
+   getTotalUsersCount,
    getCurrentPage,
    getFollowingInProgress,
    getIsFetching,
+   getPageSize,
    getUsers,
 } from '../../../Redux/usersSelectors'
 
-class UsersApiComponent extends React.Component {
-   componentDidMount = () => {
-      this.props.requestUsers(this.props.currentPage, this.props.pageSize)
+const UsersApiComponent = (props) => {
+   let { requestUsers, currentPage, pageSize } = props
+   useEffect(() => {
+      requestUsers(currentPage, pageSize)
+   }, [requestUsers, currentPage, pageSize])
+   const changePage = (currentPage) => {
+      props.changePage(currentPage)
    }
-   changePage = (currentPage) => {
-      this.props.requestUsers(currentPage, this.props.pageSize)
-      this.props.changePage(currentPage)
-   }
-   render = () => <>{this.props.isFetching ? <Spinner /> : <Users {...this.props} changePage={this.changePage} />}</>
+   return <Users {...props} changePage={changePage} />
 }
 
 const MapStateToProps = (state) => {
    return {
       users: getUsers(state),
-      amountPages: getAmountPages(state),
+      totalUsersCount: getTotalUsersCount(state),
       currentPage: getCurrentPage(state),
+      pageSize: getPageSize(state),
       isFetching: getIsFetching(state),
       followingInProgress: getFollowingInProgress(state),
    }

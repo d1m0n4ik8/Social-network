@@ -1,5 +1,15 @@
-import React from 'react'
-import { addPost, requestProfile, getUserStatus, updateUserStatus } from '../../../Redux/profileReducer'
+import React, { useEffect } from 'react'
+import {
+   addPost,
+   requestProfile,
+   getUserStatus,
+   updateUserStatus,
+   deletePost,
+   increaseLikesCount,
+   decreaseLikesCount,
+   savePhoto,
+   saveProfileInfo,
+} from '../../../Redux/profileReducer'
 import Profile from './Profile'
 import { connect } from 'react-redux'
 import Spinner from '../../../common/Spinner'
@@ -16,16 +26,19 @@ import {
 } from '../../../Redux/profileSelectors'
 import { getIsAuth } from '../../../Redux/authSelectors'
 
-class ProfileApiComponent extends React.Component {
-   componentDidMount = () => {
-      let userId = this.props.router.params.userId
-      if (!userId) userId = this.props.id
-      this.props.requestProfile(userId)
-      this.props.getUserStatus(userId)
+const ProfileApiComponent = (props) => {
+   let userId = props.router.params.userId
+   let allowChange = false
+   const { requestProfile, getUserStatus } = props
+   if (!userId) {
+      userId = props.id
+      allowChange = true
    }
-   render = () => {
-      return <>{this.props.isFetching ? <Spinner /> : <Profile {...this.props} />}</>
-   }
+   useEffect(() => {
+      requestProfile(userId)
+      getUserStatus(userId)
+   }, [userId, requestProfile, getUserStatus])
+   return <>{props.isFetching ? <Spinner /> : <Profile {...props} allowChange={allowChange} />}</>
 }
 
 const MapStateToProps = (state) => {
@@ -54,7 +67,17 @@ const MapStateToProps = (state) => {
 // }
 
 export default compose(
-   connect(MapStateToProps, { addPost, requestProfile, getUserStatus, updateUserStatus }),
+   connect(MapStateToProps, {
+      addPost,
+      deletePost,
+      increaseLikesCount,
+      decreaseLikesCount,
+      requestProfile,
+      getUserStatus,
+      updateUserStatus,
+      savePhoto,
+      saveProfileInfo,
+   }),
    withAuthRedirection,
    withRouter
 )(ProfileApiComponent)

@@ -1,8 +1,8 @@
 import { getAuth } from './authReducer'
 
-const SET_INITIALIZED = 'SET_INITIALIZED'
+const SET_INITIALIZED = 'social-network/app/SET_INITIALIZED'
 
-let initState = { initialized: false }
+let initState = { initialized: true }
 
 const appReducer = (state = initState, action) => {
    switch (action.type) {

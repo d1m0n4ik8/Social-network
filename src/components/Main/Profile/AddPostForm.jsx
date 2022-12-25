@@ -1,18 +1,26 @@
-import { Field, reduxForm } from 'redux-form'
-import { maxLengthCreator, requaired } from '../../../common/Validation/Validation'
-import { Textarea } from '../../../common/Validation/ValidationForm'
+import useInput from '../../../common/Hooks/useInput'
 import s from './Profile.module.css'
-const maxLength10 = maxLengthCreator(10)
-
 let AddNewPostForm = (props) => {
+   const postMessage = useInput('', { isEmpty: true, minLenght: 3 })
+   if (!props.allowChange) return <></>
    return (
-      <form onSubmit={props.handleSubmit}>
-         <Field className={s.textarea} validate={[requaired, maxLength10]} component={Textarea} name="postMessage" />
+      <form onSubmit={props.onSubmit}>
          <div>
-            <button className={s.btn}>Add post</button>
+            <input
+               onBlur={postMessage.onBlur}
+               onChange={postMessage.onChange}
+               value={postMessage.value}
+               name="postMessage"
+               type="text"
+            />
+            {postMessage.isDirty && postMessage.error && <div style={{ color: 'red' }}>{postMessage.error}</div>}
+         </div>
+         <div>
+            <button disabled={!postMessage.inputValid} className={s.btn}>
+               Add post
+            </button>
          </div>
       </form>
    )
 }
-AddNewPostForm = reduxForm({ form: 'AddNewPost' })(AddNewPostForm)
 export default AddNewPostForm

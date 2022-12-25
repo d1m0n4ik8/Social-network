@@ -1,8 +1,9 @@
 import { connect } from 'react-redux'
 import { Navigate } from 'react-router-dom'
+import { getIsAuth } from '../Redux/authSelectors'
 
 const mapStateToProps = (state) => ({
-   isAuth: state.auth.isAuth,
+   isAuth: getIsAuth(state),
 })
 
 export const withAuthRedirection = (Component) => {

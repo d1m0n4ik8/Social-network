@@ -1,38 +1,34 @@
 import React from 'react'
+import Paginator from '../../../common/Paginator'
 import User from './User/User'
 import s from './Users.module.css'
-
+import Spinner from '../../../common/Spinner'
 const Users = (props) => {
-   let pages = []
-   for (let i = 1; i <= props.amountPages; i++) {
-      pages.push(i)
-   }
    return (
       <div>
-         <div className={s.users}>
-            {props.users.map((user) => (
-               <User
-                  key={user.id}
-                  user={user}
-                  follow={props.follow}
-                  unfollow={props.unfollow}
-                  followingInProgress={props.followingInProgress}
-                  toggleFollowingProcces={props.toggleFollowingProcces}
-               />
-            ))}
-         </div>
-         <div className={s.paginations}>
-            {pages.map((p) => {
-               return (
-                  <span
-                     key={p}
-                     className={props.currentPage === p ? s.activePage : s.page}
-                     onClick={() => props.changePage(p)}>
-                     {p}
-                  </span>
-               )
-            })}
-         </div>
+         {props.isFetching ? (
+            <Spinner />
+         ) : (
+            <div className={s.users}>
+               {props.users.map((user) => (
+                  <User
+                     key={user.id}
+                     user={user}
+                     follow={props.follow}
+                     unfollow={props.unfollow}
+                     followingInProgress={props.followingInProgress}
+                     toggleFollowingProcces={props.toggleFollowingProcces}
+                  />
+               ))}
+            </div>
+         )}
+
+         <Paginator
+            totalUsersCount={props.totalUsersCount}
+            pageSize={props.pageSize}
+            currentPage={props.currentPage}
+            onChangePage={props.changePage}
+         />
       </div>
    )
 }

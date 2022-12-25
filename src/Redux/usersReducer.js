@@ -1,15 +1,17 @@
 import { usersAPI } from '../api/api'
+import { objArrayChangeHelper } from '../common/Helper/objChangeHelper'
 
-const FOLLOW = 'FOLLOW'
-const UNFOLLOW = 'UNFOLLOW'
-const SET_STATE = 'SET-STATE'
-const CHANGE_PAGE = 'CHANGE_PAGE'
-const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
-const TOGGLE_FOLLOWING_PROGRESS = 'TOGGLE_FOLLOWING_PROGRESS'
+const FOLLOW = 'social-network/users/FOLLOW'
+const UNFOLLOW = 'social-network/users/UNFOLLOW'
+const SET_STATE = 'social-network/users/SET-STATE'
+const CHANGE_PAGE = 'social-network/users/CHANGE_PAGE'
+const TOGGLE_IS_FETCHING = 'social-network/users/TOGGLE_IS_FETCHING'
+const TOGGLE_FOLLOWING_PROGRESS = 'social-network/users/TOGGLE_FOLLOWING_PROGRESS'
+const SET_TOTAL_USERS_COUNT = 'social-network/users/SET_TOTAL_USERS_COUNT'
 let initState = {
    users: [],
-   amountPages: 10,
-   pageSize: 8,
+   totalUsersCount: 0,
+   pageSize: 10,
    currentPage: 1,
    isFetching: false,
    followingInProgress: [],
@@ -20,24 +22,12 @@ const usersReducer = (state = initState, action) => {
       case FOLLOW:
          return {
             ...state,
-            users: state.users.map((u) => {
-               if (u.id === action.user_id) {
-                  u.followed = true
-                  return u
-               }
-               return u
-            }),
+            users: objArrayChangeHelper(state.users, action.user_id, 'followed', true),
          }
       case UNFOLLOW:
          return {
             ...state,
-            users: state.users.map((u) => {
-               if (u.id === action.user_id) {
-                  u.followed = false
-                  return u
-               }
-               return u
-            }),
+            users: objArrayChangeHelper(state.users, action.user_id, 'followed', false),
          }
       case SET_STATE:
          return { ...state, users: [...action.users] }
@@ -52,6 +42,9 @@ const usersReducer = (state = initState, action) => {
                  ...state,
                  followingInProgress: [state.followingInProgress.filter((id) => id !== action.userId)],
               }
+      case SET_TOTAL_USERS_COUNT:
+         return { ...state, totalUsersCount: action.totalCount }
+
       default:
          return state
    }
@@ -65,25 +58,28 @@ export const setUsers = (users) => ({ type: SET_STATE, users })
 export const changePage = (currentPage) => ({ type: CHANGE_PAGE, currentPage })
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching })
 export const toggleFollowingProcces = (isFetching, userId) => ({ type: TOGGLE_FOLLOWING_PROGRESS, isFetching, userId })
+export const setTotalUsersCount = (totalCount) => ({ type: SET_TOTAL_USERS_COUNT, totalCount })
 
-export const requestUsers = (currentPage, pageSize) => (dispatch) => {
+export const requestUsers = (currentPage, pageSize) => async (dispatch) => {
    dispatch(toggleIsFetching(true))
-   usersAPI.requestUsers(currentPage, pageSize).then((data) => {
-      dispatch(toggleIsFetching(false))
-      dispatch(setUsers(data.items))
-   })
+   const data = await usersAPI.requestUsers(currentPage, pageSize)
+   dispatch(toggleIsFetching(false))
+   dispatch(setUsers(data.items))
+   dispatch(setTotalUsersCount(data.totalCount))
 }
-export const follow = (userId) => (dispatch) => {
+export const follow = (userId) => async (dispatch) => {
    dispatch(toggleFollowingProcces(true, userId))
-   usersAPI.follow(userId).then((data) => {
-      if (data.resultCode === 0) dispatch(followSuccess(userId))
+   const data = await usersAPI.follow(userId)
+   if (data.resultCode === 0) {
+      dispatch(followSuccess(userId))
       dispatch(toggleFollowingProcces(false, userId))
-   })
+   }
 }
-export const unfollow = (userId) => (dispatch) => {
+export const unfollow = (userId) => async (dispatch) => {
    dispatch(toggleFollowingProcces(true, userId))
-   usersAPI.unfollow(userId).then((data) => {
-      if (data.resultCode === 0) dispatch(unfollowSuccess(userId))
+   const data = await usersAPI.unfollow(userId)
+   if (data.resultCode === 0) {
+      dispatch(unfollowSuccess(userId))
       dispatch(toggleFollowingProcces(false, userId))
-   })
+   }
 }

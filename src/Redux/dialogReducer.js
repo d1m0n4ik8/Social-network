@@ -1,4 +1,4 @@
-const ADD_NEW_MESSAGE_TYPE = 'ADD-NEW-MESSAGE'
+const ADD_NEW_MESSAGE_TYPE = 'social-network/dialog/ADD-NEW-MESSAGE'
 
 let initState = {
    dialog: [

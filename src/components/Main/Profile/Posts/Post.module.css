@@ -1,6 +1,7 @@
 .post {
    display: flex;
    align-items: center;
+   flex-direction: column;
 }
 .image img {
    width: 40px;
@@ -9,4 +10,8 @@
 .discription {
    font-size: 20px;
    padding: 0 10px;
+}
+.comments {
+   display: flex;
+   flex-direction: column;
 }
