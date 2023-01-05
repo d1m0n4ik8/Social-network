@@ -3,23 +3,14 @@ import Contacts from './Contacts'
 const ProfileInfo = (props) => {
    return (
       <div>
-         <div>
-            <b>Full name : </b>
-            {props.profile.fullName}
-         </div>
-         <div>
-            <b>About me : </b>
-            {props.profile.aboutMe}
-         </div>
+         <div>{props.profile.fullName}</div>
+         <div>{props.profile.aboutMe}</div>
          {props.profile.lookingForAJob ? (
             <div>
                <div>
-                  <b>Lopking for a job</b>
+                  <b>Looking for a job</b>
                </div>
-               <div>
-                  <b>Skills</b>
-                  {props.profile.lookingForAJobDescription}
-               </div>
+               <div>{props.profile.lookingForAJobDescription}</div>
             </div>
          ) : (
             <div>

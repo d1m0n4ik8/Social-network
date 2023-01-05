@@ -1,9 +1,18 @@
-import { authAPI, securityAPI } from '../api/api'
+import { authAPI, profileAPI, securityAPI } from '../api/api'
 const SET_USER_DATA = 'social-network/auth/SET_USER_DATA'
 const SET_ERROR_MESSAGE = 'social-network/auth/SET_ERROR_MESSAGE'
 const SET_CAPTCH_URL = 'social-network/auth/SET_CAPTCH_URL'
+const SET_PROFILE = 'social-network/auth/SET_PROFILE'
 
-let initState = { id: null, login: null, email: null, isAuth: false, errorMessage: null, captchaURL: null }
+let initState = {
+   id: null,
+   login: null,
+   email: null,
+   isAuth: false,
+   errorMessage: null,
+   captchaURL: null,
+   profile: null,
+}
 
 const authReducer = (state = initState, action) => {
    switch (action.type) {
@@ -16,6 +25,11 @@ const authReducer = (state = initState, action) => {
       case SET_CAPTCH_URL: {
          return { ...state, captchaURL: action.captchaURL }
       }
+      case SET_PROFILE:
+         return {
+            ...state,
+            profile: action.profile,
+         }
       default:
          return state
    }
@@ -33,12 +47,18 @@ const setCaptchaURL = (captchaURL) => ({
    type: SET_CAPTCH_URL,
    captchaURL,
 })
+export const setAuthUserProfile = (profile) => ({ type: SET_PROFILE, profile })
 
+export const requestAuthProfile = (userId) => async (dispatch) => {
+   const profile = await profileAPI.requestProfile(userId)
+   dispatch(setAuthUserProfile(profile))
+}
 export const getAuth = () => async (dispatch) => {
    const resolve = await authAPI.getAuth()
    if (resolve.resultCode === 0) {
       let { id, login, email } = resolve.data
       dispatch(setAuthUserData(id, login, email, true))
+      dispatch(requestAuthProfile(id))
    }
 }
 

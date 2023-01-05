@@ -1,16 +1,9 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { changePage, follow, unfollow, requestUsers } from '../../../Redux/usersReducer'
+import { changePage, requestUsers } from '../../../Redux/usersReducer'
 import Users from './Users'
 import { compose } from 'redux'
-import {
-   getTotalUsersCount,
-   getCurrentPage,
-   getFollowingInProgress,
-   getIsFetching,
-   getPageSize,
-   getUsers,
-} from '../../../Redux/usersSelectors'
+import { getTotalUsersCount, getCurrentPage, getIsFetching, getPageSize, getUsers } from '../../../Redux/usersSelectors'
 
 const UsersApiComponent = (props) => {
    let { requestUsers, currentPage, pageSize } = props
@@ -30,7 +23,6 @@ const MapStateToProps = (state) => {
       currentPage: getCurrentPage(state),
       pageSize: getPageSize(state),
       isFetching: getIsFetching(state),
-      followingInProgress: getFollowingInProgress(state),
    }
 }
 // const DispatchToProps = (dispatch) => {
@@ -54,8 +46,6 @@ const MapStateToProps = (state) => {
 // }
 export default compose(
    connect(MapStateToProps, {
-      follow,
-      unfollow,
       changePage,
       requestUsers,
    })

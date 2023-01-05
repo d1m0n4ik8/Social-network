@@ -10,13 +10,18 @@
    max-width: 100%;
    width: 100%;
    margin: 0 auto;
-   padding: 10px;
+   padding: 10px 30px;
+}
+.main {
+   padding: 0 25px;
 }
 .content {
    flex: 1 1 auto;
    display: flex;
 }
-.main {
+.w100 {
    width: 100%;
-   padding: 0 30px;
+}
+.sidebar {
+   border-right: 1px solid #fff;
 }

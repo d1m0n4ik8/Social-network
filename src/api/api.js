@@ -39,6 +39,9 @@ export const profileAPI = {
    updateProfileInfo(profileInfo) {
       return instance.put('profile', profileInfo).then((response) => response.data)
    },
+   getFollowed(userId) {
+      return instance.get(`follow/${userId}`).then((response) => response.data)
+   },
 }
 
 export const usersAPI = {

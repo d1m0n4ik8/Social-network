@@ -1,34 +1,18 @@
 import React from 'react'
-import s from './Profile.module.css'
 import Post from './Posts/Post'
 import avatar from '../../../assets/userAvatar.png'
 import ProfileStatus2 from './ProfileStatus2'
 import AddNewPostForm from './AddPostForm'
-import { useState } from 'react'
 import ProfileEditForm from './ProfileEditForm'
 import ProfileInfo from './ProfileInfo'
+import { Avatar, Col, Divider, Empty, Row, Space, Statistic } from 'antd'
+import UploadButton from '../../../common/UploadButton'
+import { SmileOutlined } from '@ant-design/icons'
+import FollowButton from '../../../common/FollowButton'
+import s from './Profile.module.css'
 
 const Profile = (props) => {
-   let [editMode, setEditMode] = useState(false)
-   const onSubmit = (e) => {
-      e.preventDefault()
-      setEditMode(false)
-      const profileInfo = {
-         ...props.profile,
-         aboutMe: e.target.aboutMe.value,
-         contacts: {
-            facebook: e.target.facebook.value,
-            website: e.target.website.value,
-            twitter: e.target.twitter.value,
-            instagram: e.target.instagram.value,
-            youtube: e.target.youtube.value,
-            github: e.target.github.value,
-            mainLink: e.target.mainLink.value,
-         },
-         lookingForAJob: e.target.lookingForAJob.checked,
-         lookingForAJobDescription: e.target.lookingForAJobDescription.value,
-         fullName: e.target.fullName.value,
-      }
+   const onSubmit = (profileInfo) => {
       props.saveProfileInfo(profileInfo)
    }
    const addNewPost = (e) => {
@@ -44,11 +28,11 @@ const Profile = (props) => {
    const decreaseLikesCount = (postId) => {
       props.decreaseLikesCount(postId)
    }
-   const onMainPhoroSelected = (e) => {
-      if (e.target.files.length) props.savePhoto(e.target.files[0])
-   }
+
    let myPosts = props.posts.map((post) => (
       <Post
+         userAvatar={props.profile.photos.large || avatar}
+         userName={props.profile.fullName}
          key={post.id}
          post={post}
          deletePost={deletePost}
@@ -59,23 +43,46 @@ const Profile = (props) => {
    ))
    return (
       <main className={s.main}>
-         <div className={s.main_img}>
-            <img src={props.profile.photos.large || avatar} alt="main-img" />
-         </div>
-         {props.allowChange && <input type="file" onChange={onMainPhoroSelected} />}
-         <button onClick={() => setEditMode(true)}>Edit</button>
-         {editMode ? (
-            <ProfileEditForm onSubmit={onSubmit} profile={props.profile} setEditMode={setEditMode} />
+         <Row>
+            <Col span={6}>
+               <Avatar size={150} icon={<img src={props.profile.photos.large || avatar} alt="main-img" />} />
+            </Col>
+            <Col span={6}>
+               <Statistic title="Followers" value={10} />
+            </Col>
+            <Col span={6}>
+               <Statistic title="Follows" value={10} />
+            </Col>
+            <Col span={6}>
+               <Statistic title="Now" prefix={<SmileOutlined />} value={'online'} />
+            </Col>
+         </Row>
+         {props.allowChange ? (
+            <UploadButton savePhoto={props.savePhoto} />
          ) : (
-            <ProfileInfo profile={props.profile} />
+            <FollowButton userId={props.profile.userId} followed={props.profile.followed} />
          )}
+
+         {props.allowChange && <ProfileEditForm onSubmit={onSubmit} profile={props.profile} />}
+         <ProfileInfo profile={props.profile} />
          <ProfileStatus2
             status={props.status}
             updateUserStatus={props.updateUserStatus}
             allowChange={props.allowChange}
          />
-         <AddNewPostForm onSubmit={addNewPost} allowChange={props.allowChange} />
-         <div className={s.posts}>{myPosts}</div>
+         <Divider style={{ color: 'white', borderColor: 'white' }} plain>
+            Posts
+         </Divider>
+         {props.allowChange && <AddNewPostForm onSubmit={addNewPost} allowChange={props.allowChange} />}
+         {myPosts.length ? (
+            <>
+               <Space wrap={true}>
+                  <div className={s.posts}>{myPosts}</div>
+               </Space>
+            </>
+         ) : (
+            <Empty />
+         )}
       </main>
    )
 }

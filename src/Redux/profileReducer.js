@@ -1,4 +1,5 @@
 import { profileAPI } from '../api/api'
+import { getAuth } from './authReducer'
 const ADD_POST_TYPE = 'social-network/profile/ADD-NEW-POST'
 const SET_PROFILE = 'social-network/profile/SET_PROFILE'
 const TOGGLE_IS_FETCHING = 'social-network/profile/TOGGLE_IS_FETCHING'
@@ -8,6 +9,7 @@ const DECREASE_LIKES_COUNT = 'social-network/profile/DECREASE_LIKES_COUNT'
 const DELETE_POST = 'social-network/profile/DELETE_POST'
 const ADD_COMMENT = 'social-network/profile/ADD_COMMENT'
 const SET_PROFILE_PHOTOS = 'social-network/profile/SET_PROFILE_PHOTOS'
+const SET_FOLLOWED = 'social-network/profile/SET_FOLLOWED'
 
 let initState = {
    profile: {
@@ -30,28 +32,29 @@ let initState = {
          small: null,
          large: null,
       },
+      followed: false,
    },
    posts: [
       {
          id: 0,
-         image: 'https://cdn-icons-png.flaticon.com/512/147/147130.png',
-         message: 'Hello, how are you?',
+         image: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg',
+         message: 'Beautiful',
          likesCount: 0,
          comments: ['Cool', 'Beautiful', 'Amazing'],
          liked: false,
       },
       {
          id: 1,
-         image: 'https://cdn-icons-png.flaticon.com/512/147/147131.png',
-         message: "Hello, I'm fine, and you?",
+         image: 'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823_960_720.jpg',
+         message: 'Fall',
          likesCount: 0,
          comments: ['Cool', 'Beautiful', 'Amazing'],
          liked: false,
       },
       {
          id: 2,
-         image: 'https://cdn-icons-png.flaticon.com/512/147/147132.png',
-         message: "I'm OK",
+         image: 'https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_960_720.jpg',
+         message: 'Lake',
          likesCount: 0,
          comments: ['Cool', 'Beautiful', 'Amazing'],
          liked: false,
@@ -65,7 +68,7 @@ const profileReducer = (state = initState, action) => {
       case ADD_POST_TYPE: {
          let post = {
             id: state.posts.length,
-            image: `https://cdn-icons-png.flaticon.com/512/147/14713${state.posts.length}.png`,
+            image: `https://cdn.pixabay.com/photo/2013/11/28/10/03/river-219972_960_720.jpg`,
             message: action.message,
             likesCount: 0,
             comments: ['Cool', 'Beautiful', 'Amazing'],
@@ -125,6 +128,11 @@ const profileReducer = (state = initState, action) => {
             ...state,
             profile: { ...state.profile, photos: action.photos },
          }
+      case SET_FOLLOWED:
+         return {
+            ...state,
+            profile: { ...state.profile, followed: action.followed },
+         }
       default:
          return state
    }
@@ -134,6 +142,7 @@ export default profileReducer
 
 export const addPost = (message) => ({ type: ADD_POST_TYPE, message })
 export const setProfile = (profile) => ({ type: SET_PROFILE, profile })
+export const setFollowed = (followed) => ({ type: SET_FOLLOWED, followed })
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching })
 export const setUserStatus = (status) => ({ type: SET_USER_STATUS, status })
 export const increaseLikesCount = (postId) => ({ type: INCREASE_LIKES_COUNT, postId })
@@ -141,32 +150,33 @@ export const decreaseLikesCount = (postId) => ({ type: DECREASE_LIKES_COUNT, pos
 export const deletePost = (postId) => ({ type: DELETE_POST, postId })
 export const addComment = (postId, comment) => ({ type: ADD_COMMENT, postId, comment })
 export const setProfilePhoto = (photos) => ({ type: SET_PROFILE_PHOTOS, photos })
-export const requestProfile = (userId) => (dispatch) => {
+
+export const requestProfile = (userId) => async (dispatch) => {
    dispatch(toggleIsFetching(true))
-   profileAPI.requestProfile(userId).then((data) => {
-      dispatch(toggleIsFetching(false))
-      dispatch(setProfile(data))
-   })
+   const data = await profileAPI.requestProfile(userId)
+   dispatch(toggleIsFetching(false))
+   dispatch(setProfile(data))
+   const followed = await profileAPI.getFollowed(userId)
+   dispatch(setFollowed(followed))
 }
 
-export const getUserStatus = (userId) => (dispatch) => {
-   profileAPI.requestStatus(userId).then((data) => {
-      dispatch(setUserStatus(data))
-   })
+export const getUserStatus = (userId) => async (dispatch) => {
+   const data = await profileAPI.requestStatus(userId)
+   dispatch(setUserStatus(data))
 }
 
-export const updateUserStatus = (status) => (dispatch) => {
-   profileAPI.updateStatus(status).then((data) => {
-      if (data.resultCode === 0) dispatch(setUserStatus(status))
-   })
+export const updateUserStatus = (status) => async (dispatch) => {
+   const data = await profileAPI.updateStatus(status)
+   if (data.resultCode === 0) dispatch(setUserStatus(status))
 }
-export const savePhoto = (photo) => (dispatch) => {
-   profileAPI.savePhoto(photo).then((data) => {
-      if (data.resultCode === 0) dispatch(setProfilePhoto(data.data.photos))
-   })
+export const savePhoto = (photo) => async (dispatch) => {
+   const data = await profileAPI.savePhoto(photo)
+   if (data.resultCode === 0) {
+      dispatch(setProfilePhoto(data.data.photos))
+      dispatch(getAuth())
+   }
 }
-export const saveProfileInfo = (profileInfo) => (dispatch) => {
-   profileAPI.updateProfileInfo(profileInfo).then((data) => {
-      if (data.resultCode === 0) dispatch(setProfile(profileInfo))
-   })
+export const saveProfileInfo = (profileInfo) => async (dispatch) => {
+   const data = await profileAPI.updateProfileInfo(profileInfo)
+   if (data.resultCode === 0) dispatch(setProfile(profileInfo))
 }

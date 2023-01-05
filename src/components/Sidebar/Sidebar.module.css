@@ -1,26 +1,22 @@
 .nav {
-   border-right: 1px solid #d3d3d3;
-   height: 90%;
-}
-.nav_links {
-   font-size: 25px;
-   list-style: none;
-   padding: 0;
-}
-.nav_links li a {
-   display: block;
-   text-decoration: none;
-   line-height: 30px;
-   color: #d3d3d3;
+   display: flex;
+   flex-direction: column;
    width: 100%;
-   padding: 0 20px;
-   line-height: 40px;
 }
-.nav_links li a:hover {
-   color: #764dbe;
-   text-decoration: solid underline;
+.navLink {
+   display: block;
+   color: #fff;
+   text-decoration: none;
 }
-li a.active {
-   color: #764dbe;
-   font-style: normal;
+.active,
+.navLink:hover,
+.active:hover {
+   color: blueviolet;
+}
+.sidebarLink {
+   color: inherit;
+   font-size: 25px;
+}
+.sidebarIcon {
+   font-size: 20px;
 }

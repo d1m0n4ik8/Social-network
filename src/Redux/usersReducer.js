@@ -1,5 +1,6 @@
 import { usersAPI } from '../api/api'
 import { objArrayChangeHelper } from '../common/Helper/objChangeHelper'
+import { setFollowed } from './profileReducer'
 
 const FOLLOW = 'social-network/users/FOLLOW'
 const UNFOLLOW = 'social-network/users/UNFOLLOW'
@@ -72,6 +73,7 @@ export const follow = (userId) => async (dispatch) => {
    const data = await usersAPI.follow(userId)
    if (data.resultCode === 0) {
       dispatch(followSuccess(userId))
+      dispatch(setFollowed(true))
       dispatch(toggleFollowingProcces(false, userId))
    }
 }
@@ -80,6 +82,7 @@ export const unfollow = (userId) => async (dispatch) => {
    const data = await usersAPI.unfollow(userId)
    if (data.resultCode === 0) {
       dispatch(unfollowSuccess(userId))
+      dispatch(setFollowed(false))
       dispatch(toggleFollowingProcces(false, userId))
    }
 }

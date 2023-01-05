@@ -7,28 +7,18 @@
    font-size: 30px;
 }
 .header .logo a:active {
-   color: #764dbe;
+   color: blueviolet;
 }
 .logo {
    display: flex;
    align-items: center;
    justify-content: space-between;
-   color: #764dbe;
+   color: blueviolet;
    font-style: italic;
-   font-weight: 600;
    font-size: 24px;
    line-height: 50px;
 }
 .login {
    display: flex;
    align-items: center;
-}
-.logout {
-   margin-left: 10px;
-   padding: 5px 10px;
-   color: #764dbe;
-   background: transparent;
-   border-radius: 20px;
-   border: 1px solid #764dbe;
-   cursor: pointer;
 }
