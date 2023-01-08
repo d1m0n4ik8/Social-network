@@ -4,7 +4,7 @@ import NewsItem from './NewsItem/NewsItem'
 const News = () => {
    return (
       <div className={s.news}>
-         <NewsItem news="News" />
+         <NewsItem />
       </div>
    )
 }

@@ -1,23 +1,40 @@
 import React from 'react'
 import s from './Messages.module.css'
-import MessageItem from './Message/MessageItem'
-import DialogItem from './Dialogs/DialogItem'
 import MessagesForm from './MessagesForm'
+import { Avatar, List, Space, Tabs } from 'antd'
 const Messages = (props) => {
-   let dialogs = props.dialog.map((el) => (
-      <DialogItem key={el.id} name={el.name} surname={el.surname} image={el.image} />
-   ))
-   let messages = props.messages.map((el) => <MessageItem key={el.id} message={el.message} avatar={el.avatar} />)
    const addNewMessage = (values) => {
       props.addNewMessage(values.message)
    }
+   const items = props.dialogs.map((dialog, index) => ({
+      label: (
+         <Space>
+            <Avatar size={64} icon={<img src={dialog.image} alt="avatar" />}></Avatar>
+            {dialog.name}
+            {dialog.surname}
+         </Space>
+      ),
+      key: index,
+      children: (
+         <>
+            <List
+               bordered
+               dataSource={dialog.messages}
+               renderItem={(item) => (
+                  <List.Item>
+                     <Avatar size={64} icon={<img src={dialog.image} alt="avatar" />}></Avatar>
+                     {item}
+                  </List.Item>
+               )}
+            />
+            <MessagesForm onSubmit={addNewMessage} />
+         </>
+      ),
+   }))
+
    return (
       <div className={s.messages}>
-         <div className={s.dialog}>{dialogs}</div>
-         <div className={s.userMessage}>
-            <div className={s.message}>{messages}</div>
-            <MessagesForm onSubmit={addNewMessage} />
-         </div>
+         <Tabs defaultActiveKey="1" tabPosition="left" items={items} />
       </div>
    )
 }

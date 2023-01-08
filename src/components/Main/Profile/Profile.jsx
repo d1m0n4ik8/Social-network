@@ -5,7 +5,7 @@ import ProfileStatus2 from './ProfileStatus2'
 import AddNewPostForm from './AddPostForm'
 import ProfileEditForm from './ProfileEditForm'
 import ProfileInfo from './ProfileInfo'
-import { Avatar, Col, Divider, Empty, Row, Space, Statistic } from 'antd'
+import { Avatar, Col, Divider, Empty, message, Row, Statistic } from 'antd'
 import UploadButton from '../../../common/UploadButton'
 import { SmileOutlined } from '@ant-design/icons'
 import FollowButton from '../../../common/FollowButton'
@@ -14,10 +14,11 @@ import s from './Profile.module.css'
 const Profile = (props) => {
    const onSubmit = (profileInfo) => {
       props.saveProfileInfo(profileInfo)
+      message.success('Profile info updated')
    }
-   const addNewPost = (e) => {
-      e.preventDefault()
-      props.addPost(e.target.postMessage.value)
+   const addNewPost = (postMessage, image) => {
+      props.addPost(postMessage, image)
+      message.success('Post added')
    }
    const deletePost = (postId) => {
       props.deletePost(postId)
@@ -43,43 +44,54 @@ const Profile = (props) => {
    ))
    return (
       <main className={s.main}>
-         <Row>
+         <Row gutter={[16, 16]}>
             <Col span={6}>
-               <Avatar size={150} icon={<img src={props.profile.photos.large || avatar} alt="main-img" />} />
+               <div style={{ display: 'flex', justifyContent: 'center' }}>
+                  <Avatar size={150} icon={<img src={props.profile.photos.large || avatar} alt="main-img" />} />
+               </div>
+               <div style={{ display: 'flex', justifyContent: 'center' }}>
+                  {props.allowChange ? (
+                     <>
+                        <UploadButton savePhoto={props.savePhoto} />
+                        <ProfileEditForm onSubmit={onSubmit} profile={props.profile} />
+                     </>
+                  ) : (
+                     <FollowButton userId={props.profile.userId} followed={props.profile.followed} />
+                  )}
+               </div>
             </Col>
-            <Col span={6}>
-               <Statistic title="Followers" value={10} />
-            </Col>
-            <Col span={6}>
-               <Statistic title="Follows" value={10} />
-            </Col>
-            <Col span={6}>
-               <Statistic title="Now" prefix={<SmileOutlined />} value={'online'} />
+            <Col span={18}>
+               <Row>
+                  <Col span={8}>
+                     <Statistic title="Followers" value={10} />
+                  </Col>
+                  <Col span={8}>
+                     <Statistic title="Follows" value={10} />
+                  </Col>
+                  <Col span={8}>
+                     <Statistic title="Now" prefix={<SmileOutlined />} value={'online'} />
+                  </Col>
+                  <Col span={12}>
+                     <ProfileInfo profile={props.profile} />
+                  </Col>
+                  <Col span={12}>
+                     <ProfileStatus2
+                        status={props.status}
+                        updateUserStatus={props.updateUserStatus}
+                        allowChange={props.allowChange}
+                     />
+                  </Col>
+               </Row>
             </Col>
          </Row>
-         {props.allowChange ? (
-            <UploadButton savePhoto={props.savePhoto} />
-         ) : (
-            <FollowButton userId={props.profile.userId} followed={props.profile.followed} />
-         )}
-
-         {props.allowChange && <ProfileEditForm onSubmit={onSubmit} profile={props.profile} />}
-         <ProfileInfo profile={props.profile} />
-         <ProfileStatus2
-            status={props.status}
-            updateUserStatus={props.updateUserStatus}
-            allowChange={props.allowChange}
-         />
          <Divider style={{ color: 'white', borderColor: 'white' }} plain>
             Posts
          </Divider>
          {props.allowChange && <AddNewPostForm onSubmit={addNewPost} allowChange={props.allowChange} />}
          {myPosts.length ? (
-            <>
-               <Space wrap={true}>
-                  <div className={s.posts}>{myPosts}</div>
-               </Space>
-            </>
+            <Row style={{ width: '100%' }} gutter={[16, 16]}>
+               {myPosts}
+            </Row>
          ) : (
             <Empty />
          )}

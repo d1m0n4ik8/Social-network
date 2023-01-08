@@ -48,7 +48,6 @@ let initState = {
          image: 'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823_960_720.jpg',
          message: 'Fall',
          likesCount: 0,
-         comments: ['Cool', 'Beautiful', 'Amazing'],
          liked: false,
       },
       {
@@ -56,25 +55,32 @@ let initState = {
          image: 'https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_960_720.jpg',
          message: 'Lake',
          likesCount: 0,
-         comments: ['Cool', 'Beautiful', 'Amazing'],
+         liked: false,
+      },
+      {
+         id: 3,
+         image: 'https://cdn.pixabay.com/photo/2022/12/30/11/09/cat-7686662_960_720.jpg',
+         message: 'Cat',
+         likesCount: 0,
          liked: false,
       },
    ],
    isFetching: false,
    status: '',
+   postCount: 3,
 }
 const profileReducer = (state = initState, action) => {
    switch (action.type) {
       case ADD_POST_TYPE: {
          let post = {
-            id: state.posts.length,
-            image: `https://cdn.pixabay.com/photo/2013/11/28/10/03/river-219972_960_720.jpg`,
+            id: state.postCount + 1,
+            image: action.image,
             message: action.message,
             likesCount: 0,
             comments: ['Cool', 'Beautiful', 'Amazing'],
             liked: false,
          }
-         return { ...state, posts: [...state.posts, post] }
+         return { ...state, postCount: state.postCount + 1, posts: [...state.posts, post] }
       }
       case SET_PROFILE:
          return {
@@ -140,7 +146,7 @@ const profileReducer = (state = initState, action) => {
 
 export default profileReducer
 
-export const addPost = (message) => ({ type: ADD_POST_TYPE, message })
+export const addPost = (message, image) => ({ type: ADD_POST_TYPE, message, image })
 export const setProfile = (profile) => ({ type: SET_PROFILE, profile })
 export const setFollowed = (followed) => ({ type: SET_FOLLOWED, followed })
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching })

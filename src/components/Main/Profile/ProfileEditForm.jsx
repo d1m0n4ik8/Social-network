@@ -1,4 +1,4 @@
-import { Button, Modal } from 'antd'
+import { Button, Col, Modal, Row } from 'antd'
 import { useState } from 'react'
 import useInput from '../../../common/Hooks/useInput'
 import { CheckOutlined, CloseOutlined, EditOutlined } from '@ant-design/icons'
@@ -21,7 +21,7 @@ const ProfileEditForm = (props) => {
             github: github.value,
             mainLink: mainLink.value,
          },
-         lookingForAJob: lookingForAJob.value,
+         lookingForAJob: !!lookingForAJob.value,
          lookingForAJobDescription: lookingForAJobDescription.value,
          fullName: fullName.value,
       }
@@ -66,9 +66,11 @@ const ProfileEditForm = (props) => {
                   Save <CheckOutlined />
                </Button>,
             ]}>
-            <form id="ProfileInfoForm" onSubmit={props.onSubmit}>
-               <div>
+            <Row gutter={[16, 16]}>
+               <Col span={12}>
                   <b>Full name : </b>
+               </Col>
+               <Col span={12}>
                   <input
                      type="text"
                      name="fullName"
@@ -76,9 +78,11 @@ const ProfileEditForm = (props) => {
                      onChange={fullName.onChange}
                      value={fullName.value}
                   />
-               </div>
-               <div>
+               </Col>
+               <Col span={12}>
                   <b>About me : </b>
+               </Col>
+               <Col span={12}>
                   <textarea
                      type="text"
                      name="aboutMe"
@@ -86,18 +90,22 @@ const ProfileEditForm = (props) => {
                      onChange={aboutMe.onChange}
                      value={aboutMe.value}
                   />
-               </div>
-               <div>
+               </Col>
+               <Col span={12}>
                   <b>Looking for a job</b>
+               </Col>
+               <Col span={12}>
                   <input
                      onChange={lookingForAJob.onChange}
                      type="checkbox"
                      name="lookingForAJob"
                      value={lookingForAJob.value}
                   />
-               </div>
-               <div>
+               </Col>
+               <Col span={12}>
                   <b>Skills </b>
+               </Col>
+               <Col span={12}>
                   <textarea
                      type="text"
                      name="lookingForAJobDescription"
@@ -105,80 +113,94 @@ const ProfileEditForm = (props) => {
                      onChange={lookingForAJobDescription.onChange}
                      value={lookingForAJobDescription.value}
                   />
-               </div>
-               <div>
-                  <div>
-                     <b>Facebook </b>
-                     <input
-                        type="text"
-                        name="facebook"
-                        onBlur={facebook.onBlur}
-                        onChange={facebook.onChange}
-                        value={facebook.value}
-                     />
-                  </div>
-                  <div>
-                     <b>Website </b>
-                     <input
-                        type="text"
-                        name="website"
-                        onBlur={website.onBlur}
-                        onChange={website.onChange}
-                        value={website.value}
-                     />
-                  </div>
-                  <div>
-                     <b>Twitter </b>
-                     <input
-                        type="text"
-                        name="twitter"
-                        onBlur={twitter.onBlur}
-                        onChange={twitter.onChange}
-                        value={twitter.value}
-                     />
-                  </div>
-                  <div>
-                     <b>Instagram </b>
-                     <input
-                        type="text"
-                        name="instagram"
-                        onBlur={instagram.onBlur}
-                        onChange={instagram.onChange}
-                        value={instagram.value}
-                     />
-                  </div>
-                  <div>
-                     <b>Youtube </b>
-                     <input
-                        type="text"
-                        name="youtube"
-                        onBlur={youtube.onBlur}
-                        onChange={youtube.onChange}
-                        value={youtube.value}
-                     />
-                  </div>
-                  <div>
-                     <b>Github </b>
-                     <input
-                        type="text"
-                        name="github"
-                        onBlur={github.onBlur}
-                        onChange={github.onChange}
-                        value={github.value}
-                     />
-                  </div>
-                  <div>
-                     <b>Main Link </b>
-                     <input
-                        type="text"
-                        name="mainLink"
-                        onBlur={mainLink.onBlur}
-                        onChange={mainLink.onChange}
-                        value={mainLink.value}
-                     />
-                  </div>
-               </div>
-            </form>
+               </Col>
+
+               <Col span={12}>
+                  <b>Facebook </b>
+               </Col>
+               <Col span={12}>
+                  <input
+                     type="text"
+                     name="facebook"
+                     onBlur={facebook.onBlur}
+                     onChange={facebook.onChange}
+                     value={facebook.value}
+                  />
+               </Col>
+               <Col span={12}>
+                  <b>Website </b>
+               </Col>
+               <Col span={12}>
+                  <input
+                     type="text"
+                     name="website"
+                     onBlur={website.onBlur}
+                     onChange={website.onChange}
+                     value={website.value}
+                  />
+               </Col>
+
+               <Col span={12}>
+                  <b>Twitter </b>
+               </Col>
+               <Col span={12}>
+                  <input
+                     type="text"
+                     name="twitter"
+                     onBlur={twitter.onBlur}
+                     onChange={twitter.onChange}
+                     value={twitter.value}
+                  />
+               </Col>
+               <Col span={12}>
+                  <b>Instagram </b>
+               </Col>
+               <Col span={12}>
+                  <input
+                     type="text"
+                     name="instagram"
+                     onBlur={instagram.onBlur}
+                     onChange={instagram.onChange}
+                     value={instagram.value}
+                  />
+               </Col>
+               <Col span={12}>
+                  <b>Youtube </b>
+               </Col>
+               <Col span={12}>
+                  <input
+                     type="text"
+                     name="youtube"
+                     onBlur={youtube.onBlur}
+                     onChange={youtube.onChange}
+                     value={youtube.value}
+                  />
+               </Col>
+               <Col span={12}>
+                  <b>Github </b>
+               </Col>
+               <Col span={12}>
+                  <input
+                     type="text"
+                     name="github"
+                     onBlur={github.onBlur}
+                     onChange={github.onChange}
+                     value={github.value}
+                  />
+               </Col>
+               <Col span={12}>
+                  <b>Main Link </b>
+               </Col>
+               <Col span={12}>
+                  <input
+                     type="text"
+                     name="mainLink"
+                     onBlur={mainLink.onBlur}
+                     onChange={mainLink.onChange}
+                     value={mainLink.value}
+                  />
+               </Col>
+            </Row>
          </Modal>
       </>
    )
