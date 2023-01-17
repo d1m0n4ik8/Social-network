@@ -22,6 +22,49 @@
 .w100 {
    width: 100%;
 }
+.justifyCenter {
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+}
+
 .sidebar {
    border-right: 1px solid #fff;
+   width: 200px;
+}
+.ant-tabs-nav {
+   position: relative;
+   z-index: 3;
+}
+.ant-badge {
+   color: inherit;
+}
+
+.statistic__item {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+.statistic__item .ant-statistic-title {
+   color: #fff;
+   font-size: 20px;
+}
+
+.statistic__item .ant-statistic-content {
+   color: #fff;
+   font-size: 24px;
+}
+
+@media (max-width: 992px) {
+   .sidebar {
+      padding: 10px;
+      width: 60px;
+   }
+   .statistic__item .ant-statistic-title {
+      font-size: 18px;
+   }
+   .statistic__item .ant-statistic-content {
+      font-size: 20px;
+   }
 }

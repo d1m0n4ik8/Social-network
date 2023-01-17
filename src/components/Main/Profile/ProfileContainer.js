@@ -12,8 +12,7 @@ import {
 } from '../../../Redux/profileReducer'
 import Profile from './Profile'
 import { connect } from 'react-redux'
-import Spinner from '../../../common/Spinner'
-import { withAuthRedirection } from '../../../hoc/withAuthRedirection'
+import Spinner from '../../../common/UIcomponents/Spinner'
 import { withRouter } from '../../../hoc/withRouter'
 import { compose } from 'redux'
 import {
@@ -78,6 +77,5 @@ export default compose(
       savePhoto,
       saveProfileInfo,
    }),
-   withAuthRedirection,
    withRouter
 )(ProfileApiComponent)

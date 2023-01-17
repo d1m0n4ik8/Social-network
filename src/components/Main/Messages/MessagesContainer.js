@@ -1,7 +1,6 @@
 import { addNewMessage } from '../../../Redux/dialogReducer'
 import Messages from './Messages'
 import { connect } from 'react-redux'
-import { withAuthRedirection } from '../../../hoc/withAuthRedirection'
 import { compose } from 'redux'
 import { getAuthProfile, getIsAuth } from '../../../Redux/authSelectors'
 import { getDialogs, getNewMessage } from '../../../Redux/dialogSelector'
@@ -12,4 +11,4 @@ const MapStateToProps = (state) => ({
    isAuth: getIsAuth(state),
    profile: getAuthProfile(state),
 })
-export default compose(connect(MapStateToProps, { addNewMessage }), withAuthRedirection)(Messages)
+export default compose(connect(MapStateToProps, { addNewMessage }))(Messages)

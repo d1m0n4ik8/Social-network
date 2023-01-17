@@ -1,8 +1,8 @@
 import React from 'react'
-import Paginator from '../../../common/Paginator'
+import Paginator from '../../../common/UIcomponents/Paginator'
 import User from './User/User'
 import s from './Users.module.css'
-import Spinner from '../../../common/Spinner'
+import Spinner from '../../../common/UIcomponents/Spinner'
 const Users = (props) => {
    return (
       <div>

@@ -3,7 +3,6 @@ import './App.css'
 import { Routes, Route } from 'react-router-dom'
 import Footer from './components/Footer/Footer'
 import Sidebar from './components/Sidebar/Sidebar'
-import Home from './components/Main/Home/Home'
 import News from './components/Main/News/News'
 import Music from './components/Main/Music/Music'
 import Settings from './components/Main/Settings/Settings'
@@ -14,21 +13,26 @@ import HeaderContainer from './components/Header/HeaderContainer'
 //import Login from './components/Login/Login'
 import { connect } from 'react-redux'
 import { initialization } from './Redux/appReducer'
-import Spinner from './common/Spinner'
+import Spinner from './common/UIcomponents/Spinner'
 import { compose } from 'redux'
 import { withBrowserRouter } from './hoc/withBrowserRouter'
 import { Col, ConfigProvider, Row } from 'antd'
 import { getInitialized, getTheme } from './Redux/appSelectors'
+import NotFound from './components/Main/NotFound'
+import { getIsAuth } from './Redux/authSelectors'
+import Login from './components/Login/Login'
 
 const ProfileContainer = lazy(() => import('./components/Main/Profile/ProfileContainer'))
 const MessagesContainer = lazy(() => import('./components/Main/Messages/MessagesContainer'))
-const Login = lazy(() => import('./components/Login/Login'))
 
 const App = (props) => {
    useEffect(() => {
       props.initialization()
    })
-   if (!props.initialized) return <Spinner />
+   if (!props.initialized) {
+      if (!props.isAuth) return <Login />
+      return <Spinner />
+   }
 
    return (
       <ConfigProvider theme={{ token: props.theme }}>
@@ -36,14 +40,13 @@ const App = (props) => {
             <HeaderContainer />
             <div className="content container">
                <Row className="w100" wrap={false}>
-                  <Col className="sidebar" flex="200px">
+                  <Col className="sidebar">
                      <Sidebar />
                   </Col>
                   <Col className="main" flex="auto">
                      <Suspense>
                         <Routes>
-                           <Route path="login" element={<Login />} />
-                           <Route path="/" element={<Home />} />
+                           <Route path="/" element={<News />} />
                            <Route path="profile" element={<ProfileContainer />}>
                               <Route path=":userId" element={<ProfileContainer />} />
                               <Route path="" element={<ProfileContainer />} />
@@ -53,6 +56,7 @@ const App = (props) => {
                            <Route path="news" element={<News />} />
                            <Route path="music" element={<Music />} />
                            <Route path="settings" element={<Settings />} />
+                           <Route path="*" element={<NotFound />} />
                         </Routes>
                      </Suspense>
                   </Col>
@@ -64,6 +68,7 @@ const App = (props) => {
    )
 }
 let mapStateToProps = (state) => ({
+   isAuth: getIsAuth(state),
    initialized: getInitialized(state),
    theme: getTheme(state),
 })

@@ -1,3 +1,4 @@
+import { message } from 'antd'
 import { profileAPI } from '../api/api'
 import { getAuth } from './authReducer'
 const ADD_POST_TYPE = 'social-network/profile/ADD-NEW-POST'
@@ -184,5 +185,10 @@ export const savePhoto = (photo) => async (dispatch) => {
 }
 export const saveProfileInfo = (profileInfo) => async (dispatch) => {
    const data = await profileAPI.updateProfileInfo(profileInfo)
-   if (data.resultCode === 0) dispatch(setProfile(profileInfo))
+   if (data.resultCode === 0) {
+      dispatch(setProfile(profileInfo))
+      message.success('Profile info updated')
+   } else {
+      message.error(data.messages[0])
+   }
 }

@@ -1,23 +1,23 @@
 import Contacts from './Contacts'
-
+import s from './Profile.module.css'
 const ProfileInfo = (props) => {
    return (
-      <div>
-         <div>{props.profile.fullName}</div>
+      <div className={s.info}>
+         <div>
+            <b>{props.profile.fullName}</b>
+         </div>
          <div>{props.profile.aboutMe}</div>
          {props.profile.lookingForAJob ? (
             <div>
-               <div>
-                  <b>Looking for a job</b>
-               </div>
+               <div>Looking for a job</div>
                <div>{props.profile.lookingForAJobDescription}</div>
             </div>
          ) : (
-            <div>
-               <b>Don't looking for a job</b>
-            </div>
+            <div>Don't looking for a job</div>
          )}
-         <Contacts contacts={props.profile.contacts} />
+         {!Object.values(props.profile.contacts).every((el) => el === '') && (
+            <Contacts contacts={props.profile.contacts} />
+         )}
       </div>
    )
 }

@@ -6,7 +6,6 @@ import AudioPlayer from './Player/AudioPlayer'
 const Music = () => {
    return (
       <div className={s.music}>
-         <h1>Music</h1>
          <AudioPlayer tracks={tracks} />
       </div>
    )

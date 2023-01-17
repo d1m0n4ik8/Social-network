@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import { follow, unfollow } from '../Redux/usersReducer'
-import { getFollowingInProgress } from '../Redux/usersSelectors'
+import { follow, unfollow } from '../../Redux/usersReducer'
+import { getFollowingInProgress } from '../../Redux/usersSelectors'
 import s from './FollowButton.module.css'
 
 let FollowButton = (props) => {

@@ -2,6 +2,9 @@
    display: flex;
    flex-direction: column;
    width: 100%;
+   position: relative;
+   z-index: 3;
+   min-width: 30px;
 }
 .navLink {
    display: block;
@@ -19,4 +22,17 @@
 }
 .sidebarIcon {
    font-size: 20px;
+}
+
+@media (max-width: 992px) {
+   .sidebarIcon {
+      font-size: 30px;
+   }
+   .sidebarLink {
+      display: none;
+   }
+   .navLink,
+   .active {
+      padding: 20px 0;
+   }
 }

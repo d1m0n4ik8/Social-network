@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import s from './User.module.css'
 import avatar from '../../../../assets/userAvatar.png'
-import FollowButton from '../../../../common/FollowButton'
+import FollowButton from '../../../../common/UIcomponents/FollowButton'
 
 const User = (props) => {
    return (

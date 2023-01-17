@@ -21,7 +21,7 @@ const ProfileEditForm = (props) => {
             github: github.value,
             mainLink: mainLink.value,
          },
-         lookingForAJob: !!lookingForAJob.value,
+         lookingForAJob: lookingForAJob,
          lookingForAJobDescription: lookingForAJobDescription.value,
          fullName: fullName.value,
       }
@@ -31,21 +31,20 @@ const ProfileEditForm = (props) => {
    const handleCancel = () => {
       setIsModalOpen(false)
    }
-
+   const [lookingForAJob, setLokingForAjob] = useState(props.profile.lookingForAJob)
    const fullName = useInput(props.profile.fullName ? props.profile.fullName : '', { isEmpty: true, minLenght: 3 })
    const aboutMe = useInput(props.profile.aboutMe ? props.profile.aboutMe : '', {})
-   const lookingForAJob = useInput(props.profile.aboutMe ? props.profile.aboutMe : props.profile.lookingForAJob, {})
    const lookingForAJobDescription = useInput(
       props.profile.lookingForAJobDescription ? props.profile.lookingForAJobDescription : '',
       {}
    )
-   const facebook = useInput(props.profile.facebook ? props.profile.facebook : '', {})
-   const website = useInput(props.profile.website ? props.profile.website : '', {})
-   const twitter = useInput(props.profile.twitter ? props.profile.twitter : '', {})
-   const instagram = useInput(props.profile.instagram ? props.profile.instagram : '', {})
-   const youtube = useInput(props.profile.youtube ? props.profile.youtube : '', {})
-   const github = useInput(props.profile.github ? props.profile.github : '', {})
-   const mainLink = useInput(props.profile.mainLink ? props.profile.mainLink : '', {})
+   const facebook = useInput(props.profile.contacts.facebook ? props.profile.contacts.facebook : '', {})
+   const website = useInput(props.profile.contacts.website ? props.profile.contacts.website : '', {})
+   const twitter = useInput(props.profile.contacts.twitter ? props.profile.contacts.twitter : '', {})
+   const instagram = useInput(props.profile.contacts.instagram ? props.profile.contacts.instagram : '', {})
+   const youtube = useInput(props.profile.contacts.youtube ? props.profile.contacts.youtube : '', {})
+   const github = useInput(props.profile.contacts.github ? props.profile.contacts.github : '', {})
+   const mainLink = useInput(props.profile.contacts.mainLink ? props.profile.contacts.mainLink : '', {})
 
    return (
       <>
@@ -96,10 +95,12 @@ const ProfileEditForm = (props) => {
                </Col>
                <Col span={12}>
                   <input
-                     onChange={lookingForAJob.onChange}
                      type="checkbox"
                      name="lookingForAJob"
-                     value={lookingForAJob.value}
+                     checked={lookingForAJob}
+                     onChange={() => {
+                        setLokingForAjob(!lookingForAJob)
+                     }}
                   />
                </Col>
                <Col span={12}>
