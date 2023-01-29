@@ -6,7 +6,7 @@ let MessagesForm = (props) => {
       <form className={s.form} onSubmit={(e) => props.onSubmit(e, props.dialogId)}>
          <input className={s.textarea} name="message" placeholder="Write message" />
          <button className={s.btn}>
-            <SendOutlined />
+            <SendOutlined style={{ height: 40 }} />
          </button>
       </form>
    )

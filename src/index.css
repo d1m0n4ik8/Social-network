@@ -6,11 +6,35 @@ body {
    height: 100%;
 }
 
+html[data-theme='dark'] {
+   --button-text-color: #fff;
+   --chat-background: #222;
+   --text-color: #d3d3d3;
+   --background-color: #191919;
+   --button-background-color: rgb(152, 48, 248);
+   --button-hover-color: rgb(152, 48, 248);
+   --border-color: #d3d3d3;
+   --border-right: 1px solid #d3d3d3;
+   --box-shadow-color: #000;
+}
+html[data-theme='ligth'] {
+   --button-text-color: #191919;
+   --chat-background: #ccc;
+   --text-color: #191919;
+   --background-color: #d3d3d3;
+   --button-background-color: rgb(152, 48, 248);
+   --button-hover-color: rgb(152, 48, 248);
+   --border-color: #191919;
+   --border-right: 1px solid #191919;
+   --box-shadow-color: #191919;
+}
+
 body {
    margin: 0;
    font-family: Roboto, 'Segoe UI', Tahoma, sans-serif;
-   background: #191919;
-   color: #d3d3d3;
+   background-color: var(--background-color);
+   color: var(--text-color);
+   transition: background-color 250ms linear;
 }
 
 code {

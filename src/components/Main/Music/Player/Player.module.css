@@ -1,41 +1,45 @@
-:root {
-   --white: #fff;
-   --active-color: #00aeb0;
-}
 .audioControls button {
    background: none;
    border: none;
    cursor: pointer;
 }
-
 input[type='range'] {
    height: 5px;
    width: 100%;
    margin-bottom: 10px;
    border-radius: 8px;
-   background: #3b7677;
+   background: var(--button-background-color);
    transition: background 0.2s ease;
    cursor: pointer;
 }
-
+.player {
+   width: 100%;
+   height: 100%;
+   display: flex;
+}
 .audioPlayer {
-   max-width: 350px;
-   padding: 24px;
+   margin: 0 auto;
+   max-width: 450px;
+   width: 100%;
+   padding: 40px;
    border-radius: 20px;
    box-shadow: 0 28px 28px rgba(0, 0, 0, 0.2);
-   margin: auto;
-   color: var(--white);
+   color: var(--text-color);
 }
 
 .artwork {
    border-radius: 120px;
    display: block;
-   margin: auto;
-   height: 200px;
-   width: 200px;
+   margin-bottom: 20px;
+   height: 250px;
+   width: 250px;
+   object-fit: cover;
 }
 
 .trackInfo {
+   display: flex;
+   align-items: center;
+   flex-direction: column;
    text-align: center;
    z-index: 1;
    position: relative;
@@ -43,39 +47,41 @@ input[type='range'] {
 
 .title {
    font-weight: 700;
-   margin-bottom: 4px;
+   font-size: 25px;
+   margin-bottom: 5px;
 }
 
 .artist {
    font-weight: 300;
-   margin-top: 0;
+   font-size: 20px;
+   margin-bottom: 20px;
 }
 
 .audioControls {
    display: flex;
    justify-content: space-between;
-   width: 75%;
-   margin: 0 auto 15px;
+   width: 100%;
+   margin-bottom: 20px;
 }
 
 .audioControls .prev svg,
 .audioControls .next svg {
-   width: 35px;
-   height: 35px;
+   width: 40px;
+   height: 40px;
 }
 
 .audioControls .play svg,
 .audioControls .pause svg {
-   height: 40px;
-   width: 40px;
+   height: 45px;
+   width: 45px;
 }
 
 .audioControls path {
-   fill: var(--white);
+   fill: var(--text-color);
 }
 
 .colorBackdrop {
-   background: linear-gradient(45deg, var(--active-color) 20%, transparent 100%) no-repeat;
+   background: linear-gradient(45deg, var(--button-background-color) 20%, transparent 100%) no-repeat;
    position: absolute;
    top: 0;
    left: 0;
@@ -86,6 +92,19 @@ input[type='range'] {
 
 .colorBackdrop.playing {
    animation: colorChange 20s alternate infinite;
+}
+@media (max-width: 1200px) {
+   .artwork {
+      width: 230px;
+      height: 230px;
+   }
+}
+
+@media (max-width: 992px) {
+   .artwork {
+      width: 200px;
+      height: 200px;
+   }
 }
 
 @keyframes colorChange {

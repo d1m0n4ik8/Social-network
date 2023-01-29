@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import s from './Paginator.module.css'
+import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons'
+
 const Paginator = ({ totalUsersCount, pageSize, currentPage, onChangePage, portionSize = 10 }) => {
    let pagesCount = Math.ceil(totalUsersCount / pageSize)
    let pages = []
@@ -16,10 +18,12 @@ const Paginator = ({ totalUsersCount, pageSize, currentPage, onChangePage, porti
       <div className={s.paginations}>
          {leftPortionPageNumber > 1 && (
             <button
+               style={{ margin: '0 10px' }}
+               className={s.activePage}
                onClick={() => {
                   setPortionNumber(portionNumber - 1)
                }}>
-               Prev
+               <DoubleLeftOutlined />
             </button>
          )}
          {pages
@@ -35,10 +39,12 @@ const Paginator = ({ totalUsersCount, pageSize, currentPage, onChangePage, porti
             })}
          {rigthPortionPageNumber < portionsCount && (
             <button
+               style={{ margin: '0 10px' }}
+               className={s.activePage}
                onClick={() => {
                   setPortionNumber(portionNumber + 1)
                }}>
-               Next
+               <DoubleRightOutlined />
             </button>
          )}
       </div>

@@ -21,7 +21,10 @@ let FollowButton = (props) => {
                Unfollow
             </button>
          ) : (
-            <button disabled={props.followingInProgress.some((id) => id === props.userId)} onClick={follow}>
+            <button
+               className={s.follow}
+               disabled={props.followingInProgress.some((id) => id === props.userId)}
+               onClick={follow}>
                Follow
             </button>
          )}

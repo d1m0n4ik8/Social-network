@@ -3,7 +3,7 @@ import Header from './Header'
 import { connect } from 'react-redux'
 import { logout } from '../../Redux/authReducer'
 import { getAuthProfile, getIsAuth, getLogin } from '../../Redux/authSelectors'
-import { changeTheme } from '../../Redux/appReducer'
+import { saveProfileInfo } from '../../Redux/profileReducer'
 
 const HeaderApiContainer = (props) => <Header {...props} />
 
@@ -13,5 +13,5 @@ let mapStateToProps = (state) => ({
    profile: getAuthProfile(state),
 })
 
-const HeaderContainer = connect(mapStateToProps, { logout, changeTheme })(HeaderApiContainer)
+const HeaderContainer = connect(mapStateToProps, { logout, saveProfileInfo })(HeaderApiContainer)
 export default HeaderContainer

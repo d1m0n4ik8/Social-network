@@ -7,29 +7,31 @@ const NewsItem = (props) => {
    return (
       <Card
          title={
-            <Space>
+            <Space className="text">
                <Avatar size={30} icon={<img src={props.news.avatar} alt="news-img" />} />
                {props.news.title}
             </Space>
          }
-         hoverable
          style={{ width: '75%', marginBottom: 30 }}
          cover={<Carousel>{images}</Carousel>}
          actions={[
             <div
                onClick={() => {
                   props.news.liked ? props.decreaseLikesCount(props.id) : props.increaseLikesCount(props.id)
-               }}>
+               }}
+               className="text">
                {props.news.likesCount}
-               <LikeOutlined key="like" />
+               <LikeOutlined key="like" className="text" />
             </div>,
-            <>
+            <div>
                <Modal title="Comments" closable={true} open={false} onCancel={'handleCancel'} footer={[]}></Modal>
-               <CommentOutlined key="comment" />
-            </>,
-            <ShareAltOutlined key="share" />,
+               <CommentOutlined key="comment" className="text" />
+            </div>,
+            <div>
+               <ShareAltOutlined key="share" className="text" />
+            </div>,
          ]}>
-         <Meta title={props.news.message} description="www.instagram.com" />
+         <Meta title={<div className="text">{props.news.message}</div>} className="meta" />
       </Card>
    )
 }

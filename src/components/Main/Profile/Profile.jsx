@@ -5,6 +5,7 @@ import { Col, Divider, Empty, Row } from 'antd'
 import { Statistics } from './Statistics'
 import { ProfileEdit } from './ProfileEdit'
 import s from './Profile.module.css'
+import InfiniteScroll from 'react-infinite-scroll-component'
 
 const Profile = (props) => {
    const deletePost = (postId) => {
@@ -30,43 +31,50 @@ const Profile = (props) => {
       />
    ))
    return (
-      <main className={s.main}>
-         <Row gutter={[16, 16]}>
-            <Col span={6}>
-               <ProfileEdit
-                  savePhoto={props.savePhoto}
-                  allowChange={props.allowChange}
-                  profile={props.profile}
-                  saveProfileInfo={props.saveProfileInfo}
-                  addPost={props.addPost}
-               />
-            </Col>
-            <Col span={18}>
-               <Statistics
-                  status={props.status}
-                  updateUserStatus={props.updateUserStatus}
-                  allowChange={props.allowChange}
-                  profile={props.profile}
-               />
-            </Col>
-         </Row>
-         <Divider style={{ color: 'white', borderColor: 'white' }} plain>
-            Posts
-         </Divider>
-         {props.allowChange ? (
-            <>
-               {myPosts.length ? (
-                  <Row className="w100" gutter={[16, 16]}>
-                     {myPosts}
-                  </Row>
+      <div
+         id="scrollableDiv"
+         style={{
+            height: '75vh',
+            overflow: 'auto',
+            padding: '0 16px',
+         }}>
+         <InfiniteScroll dataLength={props.posts.length} scrollableTarget="scrollableDiv">
+            <main className={s.main}>
+               <Row gutter={[16, 16]} justify="center">
+                  <Col span={6} className="AvatatMobile2">
+                     <ProfileEdit allowChange={props.allowChange} profile={props.profile} />
+                  </Col>
+                  <Col span={18}>
+                     <Statistics
+                        status={props.status}
+                        updateUserStatus={props.updateUserStatus}
+                        allowChange={props.allowChange}
+                        profile={props.profile}
+                        savePhoto={props.savePhoto}
+                        saveProfileInfo={props.saveProfileInfo}
+                        addPost={props.addPost}
+                     />
+                  </Col>
+               </Row>
+               <Divider className="divider__text" style={{ padding: '20px 0px' }} plain>
+                  Posts
+               </Divider>
+               {props.allowChange ? (
+                  <>
+                     {myPosts.length ? (
+                        <Row className="w100" gutter={[16, 16]}>
+                           {myPosts}
+                        </Row>
+                     ) : (
+                        <Empty />
+                     )}
+                  </>
                ) : (
                   <Empty />
                )}
-            </>
-         ) : (
-            <Empty />
-         )}
-      </main>
+            </main>
+         </InfiniteScroll>
+      </div>
    )
 }
 

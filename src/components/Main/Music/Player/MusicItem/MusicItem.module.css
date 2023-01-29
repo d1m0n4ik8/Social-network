@@ -1,0 +1,27 @@
+.music__item {
+   width: 100%;
+   padding: 10px 20px;
+   display: flex;
+   align-items: center;
+   border-radius: 20px;
+   box-shadow: 0 28px 28px rgba(0, 0, 0, 0.2);
+   color: var(--text-color);
+   margin-bottom: 10px;
+}
+.music__item:hover {
+   cursor: pointer;
+}
+.index {
+   padding: 0 5px;
+}
+.title,
+.index {
+   font-size: 20px;
+}
+.subtitle {
+   font-size: 18px;
+}
+.title,
+.subtitle {
+   font-style: italic;
+}

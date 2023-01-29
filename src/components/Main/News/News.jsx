@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { decreaseNewsLikesCount, increaseNewsLikesCount } from '../../../Redux/newsReducer'
 import { getNews } from '../../../Redux/newsSelectors'
 import NewsItem from './NewsItem/NewsItem'
+import s from './News.module.css'
 let News = (props) => {
    const increaseLikesCount = (newsid) => {
       props.increaseNewsLikesCount(newsid)
@@ -22,7 +23,7 @@ let News = (props) => {
       />
    ))
    return (
-      <div style={{ maxWidth: 1200 }}>
+      <div style={{ maxWidth: '100%' }}>
          <div
             id="scrollableDiv"
             style={{
@@ -33,7 +34,7 @@ let News = (props) => {
             <InfiniteScroll
                dataLength={news.length}
                endMessage={
-                  <Divider style={{ color: '#fff', borderColor: '#fff', fontSize: 24 }} plain>
+                  <Divider className={s.divider} plain>
                      It is all, nothing more 🤐
                   </Divider>
                }

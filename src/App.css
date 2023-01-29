@@ -1,16 +1,25 @@
 #root {
    min-height: 100%;
 }
+
 .page {
    min-height: 100vh;
    display: flex;
    flex-direction: column;
+}
+.text {
+   color: var(--text-color);
+}
+.ant-dropdown .ant-dropdown-menu {
+   color: var(--text-color);
+   background-color: var(--background-color);
 }
 .container {
    max-width: 100%;
    width: 100%;
    margin: 0 auto;
    padding: 10px 30px;
+   padding-top: 60px;
 }
 .main {
    padding: 0 25px;
@@ -29,42 +38,163 @@
 }
 
 .sidebar {
-   border-right: 1px solid #fff;
+   border-right: var(--border-right);
    width: 200px;
-}
-.ant-tabs-nav {
-   position: relative;
-   z-index: 3;
+   min-width: 200px;
 }
 .ant-badge {
    color: inherit;
 }
-
-.statistic__item {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
+.divider {
+   margin: 5px;
+   background-color: var(--text-color);
 }
-.statistic__item .ant-statistic-title {
-   color: #fff;
-   font-size: 20px;
+.divider__text span {
+   color: var(--text-color);
+   transition: color 250ms linear;
+}
+.divider__text::before,
+.divider__text::after {
+   background-color: var(--text-color);
+}
+.btn {
+   padding: 15px 20px;
+   height: 50px;
+   border-radius: 16px;
+   color: var(--button-text-color);
+   background-color: var(--button-background-color);
+   cursor: pointer;
+   font-size: 16px;
+   transition: color 250ms linear;
+   transition: background-color 250ms linear;
+   border-color: var(--button-background-color);
+}
+.btn:hover {
+   color: var(--button-text-color);
+   background-color: transparent;
+   border-color: var(--button-background-color);
+}
+.avatar {
+   width: 150px;
+   height: 150px;
+}
+.AvatatMobile1 {
+   display: none;
+}
+.AvatatMobile2 {
+   display: block;
 }
 
-.statistic__item .ant-statistic-content {
-   color: #fff;
+.ant-tabs-tab-btn {
+   width: 100%;
+}
+.ant-list-items .ant-list-item {
+   border: none;
+}
+.ant-statistic .ant-statistic-title,
+.ant-statistic .ant-statistic-content {
+   color: var(--text-color);
    font-size: 24px;
+   transition: color 250ms linear;
 }
-
+.ant-tabs-content-holder {
+   width: 0;
+}
+.ant-card-bordered {
+   border: none;
+   box-shadow: 0px 0px 2px var(--box-shadow-color);
+}
+.ant-card-bordered:hover {
+   box-shadow: 0px 0px 5px var(--box-shadow-color);
+}
+.ant-card .ant-card-actions {
+   border-top: 1px solid var(--border-color);
+   transition: border-color 250ms linear;
+}
+.ant-modal .ant-modal-content,
+.ant-modal-content .ant-modal-header,
+.ant-modal-header .ant-modal-title {
+   background-color: var(--background-color);
+   color: var(--text-color);
+   transition: color 250ms linear;
+   transition: background-color 250ms linear;
+}
+.ant-card .ant-card-cover img {
+   border-radius: 0;
+}
+.ant-card .ant-card-actions > li:not(:last-child) {
+   border-inline-end: 1px solid var(--border-color);
+}
+.ant-card,
+.ant-card .ant-card-actions {
+   background-color: var(--background-color);
+   transition: background-color 250ms linear;
+}
+.ant-list .ant-list-item .ant-list-item-meta .ant-list-item-meta-title,
+.ant-list .ant-list-item .ant-list-item-meta .ant-list-item-meta-description {
+   color: var(--text-color);
+   transition: color 250ms linear;
+}
+.page__404 .ant-result-title,
+.page__404 .ant-result-subtitle {
+   color: var(--text-color);
+   transition: color 250ms linear;
+}
+.ant-tabs-content-holder {
+   border: none !important;
+}
+.ant-tabs-ink-bar {
+   background-color: transparent !important;
+}
 @media (max-width: 992px) {
    .sidebar {
       padding: 10px;
       width: 60px;
+      min-width: 60px;
    }
-   .statistic__item .ant-statistic-title {
-      font-size: 18px;
-   }
-   .statistic__item .ant-statistic-content {
+   .ant-statistic .ant-statistic-title,
+   .ant-statistic .ant-statistic-content {
       font-size: 20px;
+   }
+   .avatar {
+      width: 120px;
+      height: 120px;
+   }
+   .btn {
+      font-size: 14px;
+   }
+}
+
+@media (max-width: 768px) {
+   .ant-statistic .ant-statistic-title,
+   .ant-statistic .ant-statistic-content {
+      font-size: 16px;
+   }
+   .avatar {
+      width: 100px;
+      height: 100px;
+   }
+   .btn {
+      font-size: 14px;
+   }
+}
+
+@media (max-width: 576px) {
+   .ant-statistic .ant-statistic-title,
+   .ant-statistic .ant-statistic-content {
+      font-size: 16px;
+   }
+   .avatar {
+      width: 120px;
+      height: 120px;
+   }
+   .btn {
+      font-size: 12px;
+   }
+   .AvatatMobile2 {
+      display: none;
+   }
+   .AvatatMobile1 {
+      display: block;
    }
 }

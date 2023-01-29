@@ -19,7 +19,9 @@ const Contacts = ({ contacts }) => {
          key: '1',
          label: (
             <a href={contacts.facebook} target="_blank" rel="noreferrer">
-               <b>Facebook</b> {contacts.facebook}
+               <span className="text">
+                  <b>Facebook</b> {contacts.facebook}
+               </span>
             </a>
          ),
          icon: <FacebookOutlined className={s.contactsIcon} />,
@@ -29,7 +31,9 @@ const Contacts = ({ contacts }) => {
          key: '2',
          label: (
             <a href={contacts.website} target="_blank" rel="noreferrer">
-               <b>Website</b> {contacts.website}
+               <span className="text">
+                  <b>Website</b> {contacts.website}
+               </span>
             </a>
          ),
          icon: <ChromeOutlined className={s.contactsIcon} />,
@@ -39,7 +43,9 @@ const Contacts = ({ contacts }) => {
          key: '3',
          label: (
             <a href={contacts.twitter} target="_blank" rel="noreferrer">
-               <b>Twitter</b> {contacts.twitter}
+               <span className="text">
+                  <b>Twitter</b> {contacts.twitter}
+               </span>
             </a>
          ),
          icon: <TwitterOutlined className={s.contactsIcon} />,
@@ -49,7 +55,9 @@ const Contacts = ({ contacts }) => {
          key: '4',
          label: (
             <a href={contacts.instagram} target="_blank" rel="noreferrer">
-               <b>Instagram</b> {contacts.instagram}
+               <span className="text">
+                  <b>Instagram</b> {contacts.instagram}
+               </span>
             </a>
          ),
          icon: <InstagramOutlined className={s.contactsIcon} />,
@@ -59,7 +67,9 @@ const Contacts = ({ contacts }) => {
          key: '5',
          label: (
             <a href={contacts.youtube} target="_blank" rel="noreferrer">
-               <b>Youtube</b> {contacts.youtube}
+               <span className="text">
+                  <b>Youtube</b> {contacts.youtube}
+               </span>
             </a>
          ),
          icon: <YoutubeOutlined className={s.contactsIcon} />,
@@ -69,7 +79,9 @@ const Contacts = ({ contacts }) => {
          key: '6',
          label: (
             <a href={contacts.github} target="_blank" rel="noreferrer">
-               <b>Github</b> {contacts.github}
+               <span className="text">
+                  <b>Github</b> {contacts.github}
+               </span>
             </a>
          ),
          icon: <GithubOutlined className={s.contactsIcon} />,
@@ -78,8 +90,10 @@ const Contacts = ({ contacts }) => {
       {
          key: '7',
          label: (
-            <a href={contacts.mainLink} target="_blank" rel="noreferrer">
-               <b>Main Link</b> {contacts.mainLink}
+            <a className="text" href={contacts.mainLink} target="_blank" rel="noreferrer">
+               <span className="text">
+                  <b>Main Link</b> {contacts.mainLink}
+               </span>
             </a>
          ),
          icon: <LinkedinOutlined className={s.contactsIcon} />,

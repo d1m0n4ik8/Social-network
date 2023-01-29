@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, message, Upload } from 'antd'
+import { message, Upload } from 'antd'
 import ImgCrop from 'antd-img-crop'
 import { UploadOutlined } from '@ant-design/icons'
 
@@ -34,7 +34,9 @@ const UploadButton = (props) => {
    return (
       <ImgCrop rotate>
          <Upload showUploadList={false} beforeUpload={beforeUpload} onPreview={onPreview}>
-            <Button icon={<UploadOutlined />}>Upload</Button>
+            <button className="btn">
+               Upload <UploadOutlined />
+            </button>
          </Upload>
       </ImgCrop>
    )

@@ -1,8 +1,12 @@
 .messages {
+   padding: 15px 0px;
    width: 100%;
    height: 100%;
 }
-
+.header {
+   padding: 5px;
+   background-color: var(--background-color);
+}
 .form,
 .form div {
    width: 100%;
@@ -10,6 +14,7 @@
    justify-content: space-between;
    align-items: center;
 }
+
 .form div {
    flex-direction: column;
 }
@@ -20,9 +25,82 @@
    width: 100%;
    padding: 10px;
 }
+
 .btn {
    border-radius: 10px;
-   background-color: blueviolet;
+   background-color: var(--button-background-color);
    width: 18%;
    height: 100%;
+   transition: background-color 250ms linear;
+}
+
+.messageIcon {
+   color: var(--text-color);
+   font-size: 30px;
+   transition: color 250ms linear;
+}
+
+.tab__inner {
+   width: 100%;
+   color: var(--text-color);
+   font-size: 28px;
+   transition: color 250ms linear;
+}
+
+.headerAvatar {
+   width: 65px;
+   height: 65px;
+}
+
+.text {
+   color: var(--text-color);
+   font-size: 24px;
+   transition: color 250ms linear;
+}
+.message__item {
+   padding: 10px 20px;
+   border-radius: 16px;
+   background-color: var(--chat-background);
+}
+
+@media (max-width: 992px) {
+   .messageIcon,
+   .tab__inner {
+      font-size: 24px;
+   }
+   .text {
+      font-size: 20px;
+   }
+   .headerAvatar {
+      width: 50px;
+      height: 50px;
+   }
+}
+
+@media (max-width: 768px) {
+   .messageIcon,
+   .tab__inner {
+      font-size: 20px;
+   }
+   .text {
+      font-size: 16px;
+   }
+   .headerAvatar {
+      width: 40px;
+      height: 40px;
+   }
+}
+
+@media (max-width: 576px) {
+   .messageIcon,
+   .tab__inner {
+      font-size: 18px;
+   }
+   .header__text {
+      font-size: 12px;
+   }
+   .headerAvatar {
+      width: 30px;
+      height: 30px;
+   }
 }

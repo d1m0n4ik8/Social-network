@@ -1,6 +1,9 @@
+import { Col, Row } from 'antd'
 import React, { useState, useEffect, useRef } from 'react'
+import InfiniteScroll from 'react-infinite-scroll-component'
 import AudioControls from './AudioControls'
 import Backdrop from './Backdrop'
+import MusicList from './MusicList'
 import s from './Player.module.css'
 
 const AudioPlayer = ({ tracks }) => {
@@ -57,6 +60,9 @@ const AudioPlayer = ({ tracks }) => {
          setTrackIndex(0)
       }
    }
+   const toTrack = (trackId) => {
+      setTrackIndex(trackId)
+   }
 
    useEffect(() => {
       if (isPlaying) {
@@ -91,31 +97,48 @@ const AudioPlayer = ({ tracks }) => {
    }, [])
 
    return (
-      <div className={s.audioPlayer}>
-         <div className={s.trackInfo}>
-            <img className={s.artwork} src={image} alt={`track artwork for ${title} by ${artist}`} />
-            <h2 className={s.title}>{title}</h2>
-            <h3 className={s.artist}>{artist}</h3>
-            <AudioControls
-               isPlaying={isPlaying}
-               onPrevClick={toPrevTrack}
-               onNextClick={toNextTrack}
-               onPlayPauseClick={setIsPlaying}
-            />
-            <input
-               type="range"
-               value={trackProgress}
-               step="1"
-               min="0"
-               max={duration ? duration : `${duration}`}
-               className="progress"
-               onChange={(e) => onScrub(e.target.value)}
-               onMouseUp={onScrubEnd}
-               onKeyUp={onScrubEnd}
-               style={{ background: trackStyling }}
-            />
-         </div>
-         <Backdrop trackIndex={trackIndex} activeColor={color} isPlaying={isPlaying} />
+      <div
+         id="scrollableDiv"
+         style={{
+            height: '80vh',
+            overflow: 'auto',
+            width: '100%',
+         }}>
+         <InfiniteScroll style={{ padding: 20 }} dataLength={tracks.length} scrollableTarget="scrollableDiv">
+            <Row className={s.player}>
+               <Col className="w100" md={24} lg={8}>
+                  <div className={s.audioPlayer}>
+                     <div className={s.trackInfo}>
+                        <img className={s.artwork} src={image} alt={`track artwork for ${title} by ${artist}`} />
+                        <h2 className={s.title}>{title}</h2>
+                        <h3 className={s.artist}>{artist}</h3>
+                        <AudioControls
+                           isPlaying={isPlaying}
+                           onPrevClick={toPrevTrack}
+                           onNextClick={toNextTrack}
+                           onPlayPauseClick={setIsPlaying}
+                        />
+                        <input
+                           type="range"
+                           value={trackProgress}
+                           step="1"
+                           min="0"
+                           max={duration ? duration : `${duration}`}
+                           className="progress"
+                           onChange={(e) => onScrub(e.target.value)}
+                           onMouseUp={onScrubEnd}
+                           onKeyUp={onScrubEnd}
+                           style={{ background: trackStyling }}
+                        />
+                     </div>
+                     <Backdrop trackIndex={trackIndex} activeColor={color} isPlaying={isPlaying} />
+                  </div>
+               </Col>
+               <Col className="w100" md={24} lg={16}>
+                  <MusicList tracks={tracks} changeTrack={toTrack} />
+               </Col>
+            </Row>
+         </InfiniteScroll>
       </div>
    )
 }

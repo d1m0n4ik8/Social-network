@@ -5,7 +5,6 @@ import {
    CustomerServiceOutlined,
    MessageOutlined,
    ReadOutlined,
-   ToolOutlined,
    UsergroupAddOutlined,
    UserOutlined,
 } from '@ant-design/icons'
@@ -24,7 +23,7 @@ const Sidebar = () => {
          </NavLink>
 
          <NavLink to="/messages" className={({ isActive }) => (isActive ? s.active : s.navLink)}>
-            <Badge count={3} size="small" offset={[offset ? 10 : 0, offset ? 10 : 0]}>
+            <Badge count={4} size="small" offset={[offset ? 10 : 0, offset ? 10 : 0]}>
                <Space className="messages" size="middle" align="center">
                   <MessageOutlined className={s.sidebarIcon} />
                   <Text className={s.sidebarLink}>Messages</Text>
@@ -50,13 +49,6 @@ const Sidebar = () => {
             <Space size={'middle'} align="center">
                <CustomerServiceOutlined className={s.sidebarIcon} />
                <Text className={s.sidebarLink}>Music</Text>
-            </Space>
-         </NavLink>
-
-         <NavLink to="/login" className={({ isActive }) => (isActive ? s.active : s.navLink)}>
-            <Space size={'middle'} align="center">
-               <ToolOutlined className={s.sidebarIcon} />
-               <Text className={s.sidebarLink}>Settings</Text>
             </Space>
          </NavLink>
       </nav>

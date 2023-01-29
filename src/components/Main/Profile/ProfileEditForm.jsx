@@ -1,7 +1,8 @@
 import { Button, Col, Modal, Row } from 'antd'
 import { useState } from 'react'
 import useInput from '../../../common/Hooks/useInput'
-import { CheckOutlined, CloseOutlined, EditOutlined } from '@ant-design/icons'
+import { CheckOutlined, CloseOutlined } from '@ant-design/icons'
+import s from './Profile.module.css'
 
 const ProfileEditForm = (props) => {
    const [isModalOpen, setIsModalOpen] = useState(false)
@@ -48,9 +49,7 @@ const ProfileEditForm = (props) => {
 
    return (
       <>
-         <Button type="primary" onClick={showModal}>
-            Edit profile info <EditOutlined />
-         </Button>
+         <div onClick={showModal}>{props.children}</div>
          <Modal
             title="User profile"
             closable={false}
@@ -71,6 +70,7 @@ const ProfileEditForm = (props) => {
                </Col>
                <Col span={12}>
                   <input
+                     className={s.input}
                      type="text"
                      name="fullName"
                      onBlur={fullName.onBlur}
@@ -83,6 +83,7 @@ const ProfileEditForm = (props) => {
                </Col>
                <Col span={12}>
                   <textarea
+                     className={s.input}
                      type="text"
                      name="aboutMe"
                      onBlur={aboutMe.onBlur}
@@ -95,6 +96,7 @@ const ProfileEditForm = (props) => {
                </Col>
                <Col span={12}>
                   <input
+                     className={s.input}
                      type="checkbox"
                      name="lookingForAJob"
                      checked={lookingForAJob}
@@ -108,6 +110,7 @@ const ProfileEditForm = (props) => {
                </Col>
                <Col span={12}>
                   <textarea
+                     className={s.input}
                      type="text"
                      name="lookingForAJobDescription"
                      onBlur={lookingForAJobDescription.onBlur}
@@ -121,6 +124,7 @@ const ProfileEditForm = (props) => {
                </Col>
                <Col span={12}>
                   <input
+                     className={s.input}
                      type="text"
                      name="facebook"
                      onBlur={facebook.onBlur}
@@ -133,6 +137,7 @@ const ProfileEditForm = (props) => {
                </Col>
                <Col span={12}>
                   <input
+                     className={s.input}
                      type="text"
                      name="website"
                      onBlur={website.onBlur}
@@ -146,6 +151,7 @@ const ProfileEditForm = (props) => {
                </Col>
                <Col span={12}>
                   <input
+                     className={s.input}
                      type="text"
                      name="twitter"
                      onBlur={twitter.onBlur}
@@ -158,6 +164,7 @@ const ProfileEditForm = (props) => {
                </Col>
                <Col span={12}>
                   <input
+                     className={s.input}
                      type="text"
                      name="instagram"
                      onBlur={instagram.onBlur}
@@ -170,6 +177,7 @@ const ProfileEditForm = (props) => {
                </Col>
                <Col span={12}>
                   <input
+                     className={s.input}
                      type="text"
                      name="youtube"
                      onBlur={youtube.onBlur}
@@ -182,6 +190,7 @@ const ProfileEditForm = (props) => {
                </Col>
                <Col span={12}>
                   <input
+                     className={s.input}
                      type="text"
                      name="github"
                      onBlur={github.onBlur}
@@ -194,6 +203,7 @@ const ProfileEditForm = (props) => {
                </Col>
                <Col span={12}>
                   <input
+                     className={s.input}
                      type="text"
                      name="mainLink"
                      onBlur={mainLink.onBlur}

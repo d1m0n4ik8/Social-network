@@ -15,9 +15,7 @@ const ProfileInfo = (props) => {
          ) : (
             <div>Don't looking for a job</div>
          )}
-         {!Object.values(props.profile.contacts).every((el) => el === '') && (
-            <Contacts contacts={props.profile.contacts} />
-         )}
+         {Object.values(props.profile.contacts).some((el) => el) && <Contacts contacts={props.profile.contacts} />}
       </div>
    )
 }

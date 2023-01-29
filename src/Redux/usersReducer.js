@@ -12,7 +12,7 @@ const SET_TOTAL_USERS_COUNT = 'social-network/users/SET_TOTAL_USERS_COUNT'
 let initState = {
    users: [],
    totalUsersCount: 0,
-   pageSize: 10,
+   pageSize: 14,
    currentPage: 1,
    isFetching: false,
    followingInProgress: [],

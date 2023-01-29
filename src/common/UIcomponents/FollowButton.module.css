@@ -1,15 +1,30 @@
 .following {
    padding: 0 20px;
 }
-.following button {
+.unfollow,
+.follow {
    padding: 5px 10px;
    background: rgb(89, 108, 231);
    border-radius: 20px;
    border: none;
+   color: var(--text-color);
+   width: 100px;
 }
-.following button:hover {
+.follow {
    background: rgb(68, 88, 222);
 }
-.following button.unfollow {
-   background: #d3d3d3;
+.follow:hover {
+   background: transparent;
+   border: var(--border-right);
+}
+.follow:hover,
+.unfollow:hover {
+   cursor: pointer;
+}
+.unfollow {
+   background: transparent;
+   border: var(--border-right);
+}
+.unfollow:hover {
+   border-color: rgb(253, 76, 76);
 }

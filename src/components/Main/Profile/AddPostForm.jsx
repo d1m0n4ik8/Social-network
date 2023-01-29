@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import useInput from '../../../common/Hooks/useInput'
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
-import { Button, message, Modal, Upload } from 'antd'
-import s from './Profile.module.css'
+import { message, Modal, Upload } from 'antd'
 
 const getBase64 = (img, callback) => {
    const reader = new FileReader()
@@ -57,20 +56,20 @@ const AddPostForm = (props) => {
       </div>
    )
 
-   if (!props.allowChange) return <></>
    return (
       <>
-         <Button type="primary" onClick={showModal}>
-            Add post
-         </Button>
+         <button className="btn" onClick={showModal}>
+            Add post <PlusOutlined />
+         </button>
          <Modal
+            onCancel={handleCancel}
             title="Add new post"
             open={isModalOpen}
             footer={[
-               <button onClick={handleCancel} className={s.btn}>
+               <button key={1} onClick={handleCancel} className="btn">
                   Cancel
                </button>,
-               <button onClick={addPost} disabled={!postMessage.inputValid || !imageUrl} className={s.btn}>
+               <button key={2} onClick={addPost} disabled={!postMessage.inputValid || !imageUrl} className="btn">
                   Add post
                </button>,
             ]}>

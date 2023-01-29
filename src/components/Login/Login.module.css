@@ -1,3 +1,7 @@
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+   transition: background-color 600000s 0s, color 600000s 0s;
+}
 .rememberMe {
    padding: 10px 0;
    align-items: center;
@@ -6,4 +10,27 @@
 .summaryError {
    border: 1px solid red;
    color: red;
+}
+.login__container {
+   width: 100vw;
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+.login {
+   width: 250px;
+}
+.input {
+   width: 100%;
+   border: 1px solid var(--text-color);
+   border-radius: 20px;
+   padding: 10px 15px;
+   color: var(--text-color);
+   background-color: var(--background-color);
+}
+.input:focus {
+   background-color: var(--background-color);
+   color: var(--text-color);
 }

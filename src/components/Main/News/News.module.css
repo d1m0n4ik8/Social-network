@@ -6,3 +6,16 @@
    align-items: center;
    flex-direction: column;
 }
+.divider::before,
+.divider::after {
+   background-color: var(--button-text-color);
+}
+.divider span {
+   color: var(--button-text-color);
+   font-size: 24px;
+}
+@media (max-width: 576px) {
+   .divider span {
+      font-size: 14px;
+   }
+}
