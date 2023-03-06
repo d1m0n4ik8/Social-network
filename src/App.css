@@ -18,11 +18,10 @@
    max-width: 100%;
    width: 100%;
    margin: 0 auto;
-   padding: 10px 30px;
    padding-top: 60px;
 }
 .main {
-   padding: 0 25px;
+   padding: 0;
 }
 .content {
    flex: 1 1 auto;
@@ -42,6 +41,7 @@
    width: 200px;
    min-width: 200px;
 }
+
 .ant-badge {
    color: inherit;
 }
@@ -146,11 +146,14 @@
 .ant-tabs-ink-bar {
    background-color: transparent !important;
 }
+.main .ant-tabs-content-holder > .ant-tabs-content > .ant-tabs-tabpane {
+   padding-left: 0;
+}
 @media (max-width: 992px) {
    .sidebar {
-      padding: 10px;
-      width: 60px;
-      min-width: 60px;
+      padding-left: 10px;
+      width: 65px;
+      min-width: 65px;
    }
    .ant-statistic .ant-statistic-title,
    .ant-statistic .ant-statistic-content {
@@ -177,16 +180,22 @@
    .btn {
       font-size: 14px;
    }
+   .container {
+      padding: 60px 5px 5px 5px;
+   }
 }
 
 @media (max-width: 576px) {
+   .sidebar {
+      display: none;
+   }
    .ant-statistic .ant-statistic-title,
    .ant-statistic .ant-statistic-content {
       font-size: 16px;
    }
    .avatar {
-      width: 120px;
-      height: 120px;
+      width: 150px;
+      height: 150px;
    }
    .btn {
       font-size: 12px;
@@ -196,5 +205,10 @@
    }
    .AvatatMobile1 {
       display: block;
+   }
+}
+@media (max-width: 320px) {
+   .container {
+      padding: 70px 0px 0px 0px;
    }
 }

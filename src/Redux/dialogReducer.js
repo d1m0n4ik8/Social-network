@@ -29,16 +29,6 @@ let initState = {
                message: '😊😊😊',
                fromMe: false,
             },
-            {
-               id: 4,
-               message: '😊😊😊',
-               fromMe: false,
-            },
-            {
-               id: 5,
-               message: '😊😊😊',
-               fromMe: false,
-            },
          ],
       },
       {

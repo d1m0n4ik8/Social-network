@@ -29,7 +29,6 @@ let News = (props) => {
             style={{
                height: '75vh',
                overflow: 'auto',
-               padding: '0 16px',
             }}>
             <InfiniteScroll
                dataLength={news.length}

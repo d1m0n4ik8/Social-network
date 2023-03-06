@@ -19,7 +19,7 @@ const initState = {
       {
          id: 1,
          avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe7lTvrtShubuIthbLdsOwRgKHXd0tiv3LsA&usqp=CAU',
-         title: 'ukrainian news',
+         title: 'beautiful_photos',
          images: [
             'https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701304394.jpg',
             'https://rare-gallery.com/uploads/posts/576318-autumn-wallpaper.jpg',
@@ -31,7 +31,7 @@ const initState = {
       {
          id: 2,
          avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe7lTvrtShubuIthbLdsOwRgKHXd0tiv3LsA&usqp=CAU',
-         title: 'ukrainian news',
+         title: 'beautiful_photos',
          images: ['https://wallpaperaccess.com/full/3050941.jpg', 'https://wallpaperaccess.com/full/464609.jpg'],
          message: 'Lake',
          likesCount: 0,
@@ -40,7 +40,7 @@ const initState = {
       {
          id: 3,
          avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe7lTvrtShubuIthbLdsOwRgKHXd0tiv3LsA&usqp=CAU',
-         title: 'ukrainian news',
+         title: 'beautiful_photos',
          images: ['https://wallpaperaccess.com/full/4872666.jpg', 'https://wallpaperaccess.com/full/5922554.jpg'],
          message: 'Cat',
          likesCount: 0,
@@ -49,17 +49,8 @@ const initState = {
       {
          id: 4,
          avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe7lTvrtShubuIthbLdsOwRgKHXd0tiv3LsA&usqp=CAU',
-         title: 'ukrainian news',
-         images: ['https://cdn.pixabay.com/photo/2022/12/30/11/09/cat-7686662_960_720.jpg'],
-         message: 'Cat',
-         likesCount: 0,
-         liked: false,
-      },
-      {
-         id: 5,
-         avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe7lTvrtShubuIthbLdsOwRgKHXd0tiv3LsA&usqp=CAU',
-         title: 'ukrainian news',
-         images: ['https://cdn.pixabay.com/photo/2022/12/30/11/09/cat-7686662_960_720.jpg'],
+         title: 'beautiful_photos',
+         images: ['https://wallpaperaccess.com/full/5922554.jpg'],
          message: 'Cat',
          likesCount: 0,
          liked: false,

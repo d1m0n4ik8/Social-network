@@ -4,18 +4,17 @@
 .unfollow,
 .follow {
    padding: 5px 10px;
-   background: rgb(89, 108, 231);
+   background: blueviolet;
    border-radius: 20px;
    border: none;
    color: var(--text-color);
    width: 100px;
 }
-.follow {
-   background: rgb(68, 88, 222);
-}
+
 .follow:hover {
    background: transparent;
    border: var(--border-right);
+   border: 1px solid blueviolet;
 }
 .follow:hover,
 .unfollow:hover {
@@ -23,8 +22,8 @@
 }
 .unfollow {
    background: transparent;
-   border: var(--border-right);
+   border: 1px solid blueviolet;
 }
 .unfollow:hover {
-   border-color: rgb(253, 76, 76);
+   border-color: blueviolet;
 }

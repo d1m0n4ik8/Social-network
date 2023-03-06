@@ -41,8 +41,6 @@ const Messages = (props) => {
                style={{
                   height: '70vh',
                   overflow: 'auto',
-                  padding: '0 16px',
-                  border: '1px solid rgba(140, 140, 140, 0.35)',
                   borderRadius: 20,
                }}>
                <MessageHeader back={() => setIsTabOpened(false)} dialog={dialog} />

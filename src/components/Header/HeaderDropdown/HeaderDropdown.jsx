@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { Avatar, Button, Divider, Dropdown, Space } from 'antd'
+import { Avatar, Divider, Dropdown, Space } from 'antd'
 import { UserOutlined, LogoutOutlined, SettingOutlined } from '@ant-design/icons'
 import ProfileEditForm from '../../Main/Profile/ProfileEditForm'
 import { NavLink } from 'react-router-dom'
 import SwitchTheme from './SwitchTheme'
+import s from './../Header.module.css'
 
 export default function HeaderDropdown(props) {
    const onSubmit = (profileInfo) => {
@@ -75,17 +76,13 @@ export default function HeaderDropdown(props) {
          onOpenChange={handleOpenChange}
          open={open}
          placement="bottomRight">
-         <Button type="text">
-            <Space align="center">
-               <div level={4} className="text" style={{ fontSize: 20, fontStyle: 'italic' }}>
-                  {props.login}
-               </div>
-               <Avatar
-                  size={30}
-                  icon={!!props.profile ? <img src={props.profile.photos.small} alt="avatar" /> : <UserOutlined />}
-               />
-            </Space>
-         </Button>
+         <Space className={s.dropdown + ' text'} align="center">
+            {props.login}
+            <Avatar
+               size={30}
+               icon={!!props.profile ? <img src={props.profile.photos.small} alt="avatar" /> : <UserOutlined />}
+            />
+         </Space>
       </Dropdown>
    )
 }

@@ -7,7 +7,6 @@ import useInput from '../../common/Hooks/useInput'
 import SwitchTheme from '../Header/HeaderDropdown/SwitchTheme'
 
 const Login = (props) => {
-   console.log(props)
    const onSubmit = (e) => {
       e.preventDefault()
       let captcha = props.captchaURL ? e.target.captcha.value : null

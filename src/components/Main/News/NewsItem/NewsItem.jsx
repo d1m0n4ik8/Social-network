@@ -2,6 +2,8 @@ import { CommentOutlined, LikeOutlined, ShareAltOutlined } from '@ant-design/ico
 import { Avatar, Card, Carousel, Image, Modal, Space } from 'antd'
 import Meta from 'antd/es/card/Meta'
 import React from 'react'
+import s from './../News.module.css'
+
 const NewsItem = (props) => {
    const images = props.news.images.map((img, index) => <Image key={index} alt="newsImage" src={img} />)
    return (
@@ -12,7 +14,7 @@ const NewsItem = (props) => {
                {props.news.title}
             </Space>
          }
-         style={{ width: '75%', marginBottom: 30 }}
+         className={s.card}
          cover={<Carousel>{images}</Carousel>}
          actions={[
             <div

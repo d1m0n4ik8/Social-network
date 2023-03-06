@@ -12,7 +12,7 @@ const UsersApiComponent = (props) => {
    let { requestUsers, currentPage, pageSize } = props
    useEffect(() => {
       if (w768) requestUsers(currentPage, pageSize)
-      else requestUsers(currentPage, pageSize / 2)
+      else requestUsers(currentPage, pageSize / 1.5)
    }, [requestUsers, currentPage, pageSize, w768])
    const changePage = (currentPage) => {
       props.changePage(currentPage)

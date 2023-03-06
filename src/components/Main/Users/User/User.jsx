@@ -10,8 +10,11 @@ const User = (props) => {
       <Row align="middle">
          <Col span={12}>
             <NavLink className={s.userProfile} to={'/profile/' + props.user.id}>
-               <Space size="large">
-                  <Avatar size={60} icon={<img src={props.user.photos.small || avatar} alt="avatar" />} />
+               <Space size="small">
+                  <Avatar
+                     size={{ xs: 40, sm: 40, md: 60, lg: 60, xl: 60 }}
+                     icon={<img src={props.user.photos.small || avatar} alt="avatar" />}
+                  />
                   <div className={s.fullName}>{props.user.name}</div>
                </Space>
             </NavLink>

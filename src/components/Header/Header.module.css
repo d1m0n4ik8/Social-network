@@ -6,9 +6,10 @@
    transition: background-color 250ms linear;
 }
 .header .logo a {
-   padding-left: 40px;
+   padding: 10px 0 10px 25px;
    text-decoration: none;
    font-size: 30px;
+   color: var(--button-background-color);
 }
 .header .logo a:active {
    color: var(--button-background-color);
@@ -19,13 +20,36 @@
    justify-content: space-between;
    color: var(--button-background-color);
    font-style: italic;
-   font-size: 24px;
-   line-height: 50px;
 }
 .login {
    display: flex;
    align-items: center;
 }
 .dropdown {
-   background-color: var(--background-color);
+   cursor: pointer;
+   font-size: 22px;
+   padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+   .header .logo a {
+      padding-left: 20px;
+   }
+}
+
+@media (max-width: 576px) {
+   .header .logo a {
+      font-size: 24px;
+   }
+   .dropdown {
+      font-size: 20px;
+   }
+}
+@media (max-width: 350px) {
+   .header .logo a {
+      font-size: 20px;
+   }
+   .dropdown {
+      font-size: 18px;
+   }
 }

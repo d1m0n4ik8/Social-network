@@ -34,9 +34,8 @@ const Profile = (props) => {
       <div
          id="scrollableDiv"
          style={{
-            height: '75vh',
+            height: '80vh',
             overflow: 'auto',
-            padding: '0 16px',
          }}>
          <InfiniteScroll dataLength={props.posts.length} scrollableTarget="scrollableDiv">
             <main className={s.main}>
@@ -44,7 +43,7 @@ const Profile = (props) => {
                   <Col span={6} className="AvatatMobile2">
                      <ProfileEdit allowChange={props.allowChange} profile={props.profile} />
                   </Col>
-                  <Col span={18}>
+                  <Col xs={24} sm={18}>
                      <Statistics
                         status={props.status}
                         updateUserStatus={props.updateUserStatus}

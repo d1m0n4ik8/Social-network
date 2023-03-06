@@ -8,7 +8,6 @@ export default function MessageHeader({ dialog, back }) {
       <div style={{ position: 'sticky', top: 0, zIndex: 1 }}>
          <Row justify="space-between" align="middle" className={s.header}>
             <ArrowLeftOutlined className={s.messageIcon} onClick={back} />
-
             <Row justify="center" align="middle">
                <Avatar className={s.headerAvatar} icon={<img src={dialog.image} alt="avatar" />} />
                <div style={{ margin: 10 }}>

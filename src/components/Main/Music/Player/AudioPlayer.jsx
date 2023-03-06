@@ -2,7 +2,7 @@ import { Col, Row } from 'antd'
 import React, { useState, useEffect, useRef } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import AudioControls from './AudioControls'
-import Backdrop from './Backdrop'
+
 import MusicList from './MusicList'
 import s from './Player.module.css'
 
@@ -10,16 +10,11 @@ const AudioPlayer = ({ tracks }) => {
    const [trackIndex, setTrackIndex] = useState(0)
    const [trackProgress, setTrackProgress] = useState(0)
    const [isPlaying, setIsPlaying] = useState(false)
-   const { title, artist, color, image, audioSrc } = tracks[trackIndex]
+   const { title, artist, image, audioSrc } = tracks[trackIndex]
    const audioRef = useRef(new Audio(audioSrc))
    const intervalRef = useRef()
    const isReady = useRef(false)
    const { duration } = audioRef.current
-
-   const currentPercentage = duration ? `${(trackProgress / duration) * 100}%` : '0%'
-   const trackStyling = `
-    -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${currentPercentage}, #fff), color-stop(${currentPercentage}, #777))
-  `
 
    const startTimer = () => {
       clearInterval(intervalRef.current)
@@ -104,8 +99,11 @@ const AudioPlayer = ({ tracks }) => {
             overflow: 'auto',
             width: '100%',
          }}>
-         <InfiniteScroll style={{ padding: 20 }} dataLength={tracks.length} scrollableTarget="scrollableDiv">
-            <Row className={s.player}>
+         <InfiniteScroll
+            style={{ padding: 5, height: '80vh' }}
+            dataLength={tracks.length}
+            scrollableTarget="scrollableDiv">
+            <Row className={s.player} gutter={[16, 16]}>
                <Col className="w100" md={24} lg={8}>
                   <div className={s.audioPlayer}>
                      <div className={s.trackInfo}>
@@ -124,14 +122,12 @@ const AudioPlayer = ({ tracks }) => {
                            step="1"
                            min="0"
                            max={duration ? duration : `${duration}`}
-                           className="progress"
+                           className={s.progress}
                            onChange={(e) => onScrub(e.target.value)}
                            onMouseUp={onScrubEnd}
                            onKeyUp={onScrubEnd}
-                           style={{ background: trackStyling }}
                         />
                      </div>
-                     <Backdrop trackIndex={trackIndex} activeColor={color} isPlaying={isPlaying} />
                   </div>
                </Col>
                <Col className="w100" md={24} lg={16}>

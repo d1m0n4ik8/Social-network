@@ -3,17 +3,18 @@ import Paginator from '../../../common/UIcomponents/Paginator'
 import User from './User/User'
 import Spinner from '../../../common/UIcomponents/Spinner'
 import { Col, Row } from 'antd'
+import s from './Users.module.css'
 const Users = (props) => {
    return (
-      <>
-         <div style={{ height: '85%' }}>
+      <div className={s.users}>
+         <div style={{ height: '85%', padding: 10 }}>
             {props.isFetching ? (
                <Spinner />
             ) : (
                <Row justify="center" align="middle" gutter={[30, 8]}>
                   {props.users.map((user) => (
-                     <Col xs={24} md={12}>
-                        <User key={user.id} user={user} follow={props.follow} />
+                     <Col key={user.id} xs={24} md={12}>
+                        <User user={user} follow={props.follow} />
                      </Col>
                   ))}
                </Row>
@@ -26,7 +27,7 @@ const Users = (props) => {
             onChangePage={props.changePage}
             portionSize={props.portionSize}
          />
-      </>
+      </div>
    )
 }
 export default Users

@@ -9,22 +9,22 @@ body {
 html[data-theme='dark'] {
    --button-text-color: #fff;
    --chat-background: #222;
-   --text-color: #d3d3d3;
+   --text-color: #fff;
    --background-color: #191919;
    --button-background-color: rgb(152, 48, 248);
    --button-hover-color: rgb(152, 48, 248);
-   --border-color: #d3d3d3;
-   --border-right: 1px solid #d3d3d3;
+   --border-color: #fff;
+   --border-right: 1px solid #fff;
    --box-shadow-color: #000;
 }
 html[data-theme='ligth'] {
    --button-text-color: #191919;
    --chat-background: #ccc;
-   --text-color: #191919;
-   --background-color: #d3d3d3;
+   --text-color: #000;
+   --background-color: #fff;
    --button-background-color: rgb(152, 48, 248);
    --button-hover-color: rgb(152, 48, 248);
-   --border-color: #191919;
+   --border-color: #000;
    --border-right: 1px solid #191919;
    --box-shadow-color: #191919;
 }
