@@ -28,7 +28,7 @@ const App = (props) => {
    const { initialization } = props
    useEffect(() => {
       initialization()
-   }, [initialization])
+   }, [])
    if (!props.initialized) return <Spinner />
 
    if (props.initialized && !props.isAuth) return <Login theme={theme} setTheme={setTheme} />
