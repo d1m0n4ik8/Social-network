@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import useInput from '../../../common/Hooks/useInput'
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
 import { message, Modal, Upload } from 'antd'
+import s from './Profile.module.css'
 
 const getBase64 = (img, callback) => {
    const reader = new FileReader()
@@ -81,6 +82,7 @@ const AddPostForm = (props) => {
                      value={postMessage.value}
                      name="postMessage"
                      type="text"
+                     className={s.input}
                   />
                   {postMessage.isDirty && postMessage.error && <div style={{ color: 'red' }}>{postMessage.error}</div>}
                </div>
